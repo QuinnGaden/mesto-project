@@ -4,8 +4,16 @@
   grid-template-areas: 
   "ava group"
   "ava text";
-  gap: 16px 30px;
-  
-  
-  
+  gap: 16px 30px; 
+}
+
+@media (max-width: 1080px) {
+  .profile__profile-info {
+    justify-items: center;
+    grid-template-areas: 
+      "ava"
+      "group"
+      "text";
+    
+  }
 }

@@ -4,3 +4,10 @@
   padding: 0 200px;
   box-sizing: border-box;
 }
+
+@media (max-width: 767px) {
+  .page__section {
+    max-width: 320px;
+    padding: 0 19px;
+  }
+}
