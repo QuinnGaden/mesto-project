@@ -1,6 +1,7 @@
 .profile__text {
-  padding-top: 16px;
+  grid-area: text;
   margin: 0;
+  padding-bottom: 25px;
   color: #fff;
   font-size: 18px;
   line-height: 22px;

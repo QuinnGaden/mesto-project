@@ -1,5 +1,7 @@
 .profile__group {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  grid-area: group;
+  display: grid;
+  align-items: baseline;
+  grid-template-columns: max-content 1fr;
+  gap: 18px;
 }

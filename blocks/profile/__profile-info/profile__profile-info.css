@@ -1,0 +1,11 @@
+.profile__profile-info {
+  display: grid;
+  grid-area: info;
+  grid-template-areas: 
+  "ava group"
+  "ava text";
+  gap: 16px 30px;
+  
+  
+  
+}
