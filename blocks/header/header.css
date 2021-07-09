@@ -2,10 +2,12 @@
   padding-top: 45px;  
   
   
+  
 }
 
 @media (max-width: 767px) {
   .header {
+    
     padding-top: 28px;
   }
 }

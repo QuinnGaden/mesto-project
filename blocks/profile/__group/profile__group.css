@@ -5,3 +5,10 @@
   grid-template-columns: max-content 1fr;
   gap: 18px;
 }
+
+@media (max-width: 768px) {
+  .profile__group  {
+    padding-top: 8px;
+    gap: 10px
+  }
+}

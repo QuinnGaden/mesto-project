@@ -9,6 +9,7 @@
 
 @media (max-width: 1080px) {
   .profile__profile-info {
+    
     justify-items: center;
     grid-template-areas: 
       "ava"
@@ -20,6 +21,6 @@
 
 @media (max-width: 768px) {
   .profile__profile-info {
-    grid-gap: 22px;
+    grid-gap: 14px;
   }
 }
