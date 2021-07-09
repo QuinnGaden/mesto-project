@@ -1,3 +1,10 @@
 .page__section_place_header {
   
 }
+
+@media (max-width: 767px) {
+  .page__section_place_header {
+    max-width: 100%;
+    padding: 0;
+  }
+}

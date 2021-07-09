@@ -3,9 +3,9 @@
   padding-bottom: 41px;
 } 
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .logo {
-    max-width: 142px;
+    max-width: 104px;
     padding: 0 0 32px 27px;
   }
 }

@@ -17,3 +17,9 @@
     
   }
 }
+
+@media (max-width: 768px) {
+  .profile__profile-info {
+    grid-gap: 22px;
+  }
+}

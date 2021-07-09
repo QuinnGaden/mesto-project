@@ -11,3 +11,12 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+@media (max-width: 768px) {
+  .profile__name {
+    padding-top: 0px;
+    font-size: 27px;
+    line-height: 33px;
+    text-align: center;
+  }
+}
