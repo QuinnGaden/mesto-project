@@ -42,6 +42,7 @@
 @import url(../blocks/popup/__item/_el/popup__item_el_text.css);
 @import url(../blocks/popup/__profile-name/popup__profile-name.css);
 @import url(../blocks/popup/__profile-about/popup__profile-about.css);
+@import url(../blocks/popup/__btn-close/popup__btn-close.css);
 /*footer*/
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__coopyright/footer__coopyright.css);

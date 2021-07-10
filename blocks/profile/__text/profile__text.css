@@ -13,11 +13,17 @@
   text-overflow: ellipsis;
 }
 
+@media (max-width: 1080px) {
+  .profile__text {
+   padding-bottom: 36px;
+  }
+}
+
 @media (max-width: 768px) {
   .profile__text {
    font-size: 14px;
    line-height: 17px;
    text-align: center;
-   padding-bottom: 36px;
+   /* padding-bottom: 36px; */
   }
 }
