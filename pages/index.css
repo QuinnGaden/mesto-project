@@ -31,6 +31,11 @@
 @import url(../blocks/elements/__name/elements__name.css);
 @import url(../blocks/elements/__vector/elements__vector.css);
 @import url(../blocks/elements/__group/elements__group.css);
+/*popup*/
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/__container/popup__container.css);
+@import url(../blocks/popup/_opened/popup_opened.css);
+@import url(../blocks/popup/__title/popup__title.css);
 /*footer*/
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__coopyright/footer__coopyright.css);
