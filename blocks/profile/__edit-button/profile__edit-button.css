@@ -2,6 +2,7 @@
   height: 24px;
   width: 24px;
   border: 1px solid #fff;
+  margin-bottom: 10px;
   background-image: url(../../../images/pen.svg);
   background-size: 10px;
   background-position: center;
@@ -16,7 +17,8 @@
 }
 
 @media (max-width: 768px) {
-  .profile__edit-button{
+  .profile__edit-button {
+    margin-bottom: 5px;
     height: 18px;
     width: 18px;
     background-size: 7.5px;

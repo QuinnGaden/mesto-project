@@ -1,7 +1,7 @@
 .profile__text {
   grid-area: text;
   margin: 0;
-  padding-bottom: 25px;
+  max-width: 336px;
   color: #fff;
   font-size: 18px;
   line-height: 22px;

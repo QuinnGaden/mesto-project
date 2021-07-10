@@ -4,6 +4,7 @@
   grid-template-areas: 
   "ava group"
   "ava text";
+  
   gap: 16px 30px; 
 }
 
