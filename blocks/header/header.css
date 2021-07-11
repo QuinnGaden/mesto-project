@@ -1,13 +1,17 @@
 .header {
-  padding-top: 45px;  
-  
-  
-  
+  max-width: 1280px;
+  padding-top: 45px;   
+}
+
+.header:after {
+  content: '';
+  display: block;
+  height: 1px;
+  background: rgba(84, 84, 84, .7);;
 }
 
 @media (max-width: 767px) {
   .header {
-    
     padding-top: 28px;
   }
 }

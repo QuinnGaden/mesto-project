@@ -1,14 +1,14 @@
-.popup__profile-name {
+.popup__profile-info {
   display: block;
   width: 358px;
-  padding: 54px 0 0 ;
+  padding: 54px 0 48px;
   margin: 0;
   border: 0;
   
 }
 
 @media (max-width: 768px) {
-  .popup__profile-name {
+  .popup__profile-info {
     max-width: 238px;
     padding: 75px 0 0;
   }

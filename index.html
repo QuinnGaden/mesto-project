@@ -9,24 +9,19 @@
 </head>
 <body class= "page">
   <header class= "header page__section page__section_place_header">
-    <div class= "logo">
-      <img class= "logo__img" src="./images/logo.svg" alt= "Лого"> 
-    </div>
-    <hr class= header__line>     
+    <img class= "logo" src="./images/logo.svg" alt= "Лого"> 
   </header>
   <main class= "content page__section">
     <section class= "profile">
       <div class= "profile__profile-info">
-        <div class= "profile__avatar">
-          <img class= "profile__image" src="./images/Avatarka.jpg" alt="Аватар">
-        </div>
-        <div class= "profile__group">
-          <p class= "profile__name"> 
-            Жак-Ив Кусто
-          </p>
-          <button class= "profile__edit-button" type= "button">
-        
-          </button>                  
+        <img class= "profile__image" src="./images/Avatarka.jpg" alt="Аватар">
+      <div class= "profile__group">
+        <h1 class= "profile__name"> 
+          Жак-Ив Кусто
+        </h1>
+        <button class= "profile__edit-button" type= "button">
+      
+        </button>                  
       </div>
       <p class= "profile__text">
         Исследователь океана
@@ -42,9 +37,9 @@
       <li class="elements__item">
         <img class="elements__image" src="./images/kirill-pershin-1088404-unsplash.png" alt="Кирпичный дом">
         <div class= "elements__group">
-          <p class= "elements__name">
+          <h2 class= "elements__name">
             Карачаевск       
-          </p>
+          </h2>
           <button class= "elements__vector" type= "button">
 
           </button>
@@ -53,9 +48,9 @@
       <li class="elements__item">
         <img class="elements__image" src="./images/kirill-pershin-1404681-unsplash.jpg" alt="Поля">
         <div class= "elements__group">
-          <p class= "elements__name">
+          <h2 class= "elements__name">
             Гора Эльбрус     
-          </p>
+          </h2>
           <button class= "elements__vector" type= "button">
 
           </button>
@@ -64,9 +59,9 @@
       <li class="elements__item">
         <img class="elements__image" src="./images//kirill-pershin-1556355-unsplash.jpg" alt="Лес и Горы">
         <div class= "elements__group">
-          <p class= "elements__name">
+          <h2 class= "elements__name">
             Домбай       
-          </p>
+          </h2>
           <button class= "elements__vector" type= "button">
 
           </button>
@@ -75,20 +70,20 @@
       <li class="elements__item">
         <img class="elements__image" src="./images/kirill-pershin-1404681-unsplash.jpg" alt="Поля">
         <div class= "elements__group">
-          <p class= "elements__name">
+          <h2 class= "elements__name">
             Гора Эльбрус       
-          </p>
+          </h2>
           <button class= "elements__vector" type= "button">
 
           </button>
         </div>
       </li>
       <li class="elements__item">
-        <img class="elements__image" src="./images//kirill-pershin-1556355-unsplash.jpg" alt="Лес и Горы"">
+        <img class="elements__image" src="./images//kirill-pershin-1556355-unsplash.jpg" alt="Лес и Горы">
         <div class= "elements__group">
-          <p class= "elements__name">
+          <h2 class= "elements__name">
             Домбай      
-          </p>
+          </h2>
           <button class= "elements__vector" type= "button">
 
           </button>
@@ -97,9 +92,9 @@
       <li class="elements__item">
         <img class="elements__image" src="./images/kirill-pershin-1088404-unsplash.png" alt="Кирпичный дом">
         <div class= "elements__group">
-          <p class= "elements__name">
+          <h2 class= "elements__name">
             Карачаево-Черкесия      
-          </p>
+          </h2>
           <button class= "elements__vector" type= "button">
 
           </button>
@@ -113,28 +108,22 @@
       &copy; 2020 Mesto Russia
     </p>
   </footer>
-  <section class= "popup"> 
-    <form class= "popup__container">
-      <h2 class= "popup__title">
+  <div class= "popup popup_opened"> 
+    <form class= "popup__form" method= "POST" name= "profile">
+      <h3 class= "popup__title">
         Редактировать профиль
-      </h2>
-      <fieldset class= "popup__profile-name">
-        <input class= "popup__item popup__item_el_text" type="text" placeholder= "Имя" >
-        
+      </h3>
+      <fieldset class= "popup__profile-info">
+        <input class= "popup__item popup__item_el_name" type="text" name= "name" placeholder= "Имя">
+        <input class= "popup__item popup__item_el_text" type= "text" name= "about" placeholder= "О вас">        
       </fieldset>
-      <fieldset class= "popup__profile-about">
-        <input class= "popup__item popup__item_el_text" type= "text" placeholder="О вас">
-        
-      </fieldset>
-      <button class= "popup__btn-save">
+      <button class= "popup__btn-save" type= "submit">
         Сохранить
       </button>
       <button class= "popup__btn-close" type= "button">
 
       </button>
     </form>
-    
-
-  </section>   
+  </div>   
 </body>
 </html>
