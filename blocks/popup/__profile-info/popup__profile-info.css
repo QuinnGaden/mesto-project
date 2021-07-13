@@ -10,6 +10,6 @@
 @media (max-width: 768px) {
   .popup__profile-info {
     max-width: 238px;
-    padding: 75px 0 0;
+    padding: 75px 0 45px;
   }
 }
