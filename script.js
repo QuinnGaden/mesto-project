@@ -6,15 +6,22 @@ let inputtext = document.querySelector ('.popup__item_el_text');
  
 let editbtn = document.querySelector ('.profile__edit-button');
   editbtn.addEventListener ('click', function popupopen() {
-  popup.classList.add ('popup_opened');    
-  inputname.value = profname.innerText;
-  inputtext.value = proftext.innerText;
-});
+    popup.classList.add ('popup_opened');    
+    inputname.value = profname.innerText;
+    inputtext.value = proftext.innerText;
+  });
 
 let closebtn = document.querySelector ('.popup__btn-close');
   closebtn.addEventListener ('click', function popupclose(){
-  popup.classList.remove ('popup_opened');
-});
+    popup.classList.remove ('popup_opened');
+  });
+
+let savebtn = document.querySelector ('.popup__btn-save');
+  savebtn.addEventListener ('click', function (){
+    profname.value = inputname.innerText;
+    proftext.value = inputtext.innerText;
+    popupclose()
+  });
 
 let formedit = document.querySelector ('.popup__form');
 
@@ -30,7 +37,7 @@ const jobInput = formElement.querySelector ('.popup__item_el_text');
 // Воспользуйтесь инструментом .querySelector()
 
 formElement.addEventListener('submit', function () {
-  console.log('Форма отправлена');
+  console.log('Форма отправлена')});
 // Обработчик «отправки» формы, хотя пока
 
 // она никуда отправляться не будет
@@ -46,27 +53,24 @@ function formSubmitHandler (evt) {
 // О том, как это делать, расскажем позже.
 
 
-let nameIn = nameInput.value; 
-let jobIn = jobInput.value;
+formname.textContent = popup__item_el_name.value;
+formtext.textContent = popup__item_el_text.value;
 // Получите значение полей jobInput и nameInput из свойства value
 
-
- profname.textContent = nameIn;
- proftext.textContent = jobIn; 
+ 
 // Выберите элементы, куда должны быть вставлены значения полей
-
-
   
 // Вставьте новые значения с помощью textContent
 
 }
-
+console.log (profname);
+console.log (proftext);
 // Прикрепляем обработчик к форме:
 
 // он будет следить за событием “submit” - «отправка»
 
 formElement.addEventListener('submit', formSubmitHandler);
 
-  
 
-  
+
+
