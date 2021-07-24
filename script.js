@@ -13,19 +13,17 @@ let editbtn = document.querySelector ('.profile__edit-button');
 
 let closebtn = document.querySelector ('.popup__btn-close');
   closebtn.addEventListener ('click', function popupclose(){
-    popup.classList.remove ('popup_opened');
-  });
+  popup.classList.remove ('popup_opened');
+});
 
 let savebtn = document.querySelector ('.popup__btn-save');
-  savebtn.addEventListener ('click', function (){
-    profname.value = inputname.innerText;
-    proftext.value = inputtext.innerText;
-    popupclose()
-  });
-
+  savebtn.addEventListener ('click', function popupclose(){
+  popup.classList.remove ('popup_opened');
+});
+  
 let formedit = document.querySelector ('.popup__form');
 
-const formElement = document.querySelector ('.popup__profile-info');
+const formElement = formedit;
 // Воспользуйтесь методом querySelector()
 
 // Находим поля формы в DOM
@@ -36,8 +34,6 @@ const nameInput = formElement.querySelector ('.popup__item_el_name');
 const jobInput = formElement.querySelector ('.popup__item_el_text');
 // Воспользуйтесь инструментом .querySelector()
 
-formElement.addEventListener('submit', function () {
-  console.log('Форма отправлена')});
 // Обработчик «отправки» формы, хотя пока
 
 // она никуда отправляться не будет
@@ -45,26 +41,22 @@ formElement.addEventListener('submit', function () {
 function formSubmitHandler (evt) {
   evt.preventDefault(); 
 // Эта строчка отменяет стандартную отправку формы.
-
                         
 // Так мы можем определить свою логику отправки.
-
                         
 // О том, как это делать, расскажем позже.
-
-
-formname.textContent = popup__item_el_name.value;
-formtext.textContent = popup__item_el_text.value;
+profname.innerHTML = nameInput.value;
+proftext.innerHTML = jobInput.value;
+// formname.textContent = nameInput.value;
+// formtext.textContent = jobInput.value;
 // Получите значение полей jobInput и nameInput из свойства value
-
  
 // Выберите элементы, куда должны быть вставлены значения полей
   
 // Вставьте новые значения с помощью textContent
 
 }
-console.log (profname);
-console.log (proftext);
+
 // Прикрепляем обработчик к форме:
 
 // он будет следить за событием “submit” - «отправка»
