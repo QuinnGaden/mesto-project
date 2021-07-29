@@ -1,0 +1,8 @@
+.popup-addcards__item {
+  width: 100%;
+  margin: 0;
+  padding: 0 0 13px;
+  border: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  outline: none;
+}
