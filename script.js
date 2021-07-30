@@ -4,7 +4,8 @@ let profname = document.querySelector ('.profile__name');
 let proftext = document.querySelector ('.profile__text');
 let inputname = document.querySelector ('.popup__item_el_name');
 let inputtext = document.querySelector ('.popup__item_el_text');
- 
+
+    
 let editbtn = document.querySelector ('.profile__edit-button');
   editbtn.addEventListener ('click', function popupopen() {
     popup.classList.add ('popup_opened');    
@@ -54,11 +55,7 @@ function formSubmit (evt) {
  
 }
 
-
 formAddCard.addEventListener('submit', formSubmit);
-
-
-
 
 // Форма редактирования
 let formedit = document.querySelector ('.popup__form');
@@ -87,6 +84,13 @@ function formSubmitHandler (evt) {
 // он будет следить за событием “submit” - «отправка»
 
 formElement.addEventListener('submit', formSubmitHandler);
+
+
+    
+  
+ 
+  
+
 
 // Массив с готовым содержимым карточек
 const initialCards = [
@@ -125,5 +129,21 @@ for (let i = 0; i <= initialCards.length - 1; i++) {
   itemElement.querySelector ('.elements__name').textContent = initialCards[i].name;
   itemsElements.prepend(itemElement);
 } 
+
+// let likeBtns = document.querySelectorAll('.elements__vector')
+// likeBtns.addEventListener ('click', function (event){
+//   event.target.classList.toggle ('elements__vector_active');
+// });
+
+let likeBtns = document.querySelectorAll ('.elements__vector');
+console.log(likeBtns)
+likeBtns.forEach((elem)=>{
+  elem.addEventListener('click',()=>{
+      elem.parentNode.querySelector('.elements__vector').classList.toggle('elements__vector_active');
+  });
+});
+
+
+
 
  
