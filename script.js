@@ -161,7 +161,6 @@ function createCard (cardData) {
   const elementTrash = cardElement.querySelector ('.elements__trash');
   const elementLikebtn = cardElement.querySelector ('.elements__vector');
   
-
   elementImage.setAttribute('src', cardData.link);
   elementImage.setAttribute('alt', cardData.name);
   elementLikebtn.addEventListener ('click', () => {
