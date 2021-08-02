@@ -7,12 +7,6 @@ let proftext = document.querySelector ('.profile__text');
 let inputname = document.querySelector ('.popup__item_el_name');
 let inputtext = document.querySelector ('.popup__item_el_text');
 
-<<<<<<< Updated upstream
-    
-let editbtn = document.querySelector ('.profile__edit-button');
-  editbtn.addEventListener ('click', function popupopen() {
-    popup.classList.add ('popup_opened');    
-=======
 function openPopup (popup) {
   popup.classList.add ('popup_opened');
 };
@@ -33,23 +27,14 @@ function setEventListenerCloseBtn() {
 let editbtn = document.querySelector ('.profile__edit-button');
   editbtn.addEventListener('click', function () {
     openPopup(popupEdit);
->>>>>>> Stashed changes
     inputname.value = profname.innerText;
     inputtext.value = proftext.innerText;
   });
 
-<<<<<<< Updated upstream
-const addbtn = document.querySelector ('.profile__add-button');
-  const popupAddCard = document.querySelector ('.popup-addcards');
-  addbtn.addEventListener ('click', function popupopen(){
-    popupAddCard.classList.add ('popup-addcards_opened');
-  })  
-=======
 let addbtn = document.querySelector ('.profile__add-button');
   addbtn.addEventListener ('click', function () {
     openPopup(popupAddcards);
   });  
->>>>>>> Stashed changes
 
 let closebtn = document.querySelector ('.popup__btn-close');
   closebtn.addEventListener ('click', function (){
@@ -154,41 +139,41 @@ function createcards () {
 }
 createcards ();
 
-function createCard (cardData) {
-  const cardElement = cardTemplate.querySelector ('.elements__item').cloneNode(true); 
-  const elementImage = cardElement.querySelector ('.elements__image');
-  const elementText = cardElement.querySelector ('.elements__name');
-  const elementTrash = cardElement.querySelector ('.elements__trash');
-  const elementLikebtn = cardElement.querySelector ('.elements__vector');
+// function createCard (cardData) {
+//   const cardElement = cardTemplate.querySelector ('.elements__item').cloneNode(true); 
+//   const elementImage = cardElement.querySelector ('.elements__image');
+//   const elementText = cardElement.querySelector ('.elements__name');
+//   const elementTrash = cardElement.querySelector ('.elements__trash');
+//   const elementLikebtn = cardElement.querySelector ('.elements__vector');
   
-  elementImage.setAttribute('src', cardData.link);
-  elementImage.setAttribute('alt', cardData.name);
-  elementLikebtn.addEventListener ('click', () => {
-    elementLikebtn.classList.toggle ('elements__vector_active');
-  });
+//   elementImage.setAttribute('src', cardData.link);
+//   elementImage.setAttribute('alt', cardData.name);
+//   elementLikebtn.addEventListener ('click', () => {
+//     elementLikebtn.classList.toggle ('elements__vector_active');
+//   });
 
-   return cardElement
+//    return cardElement
    
-}
+// }
 
 
-function addCard(cardData, cardContainer) {
-  const card = createCard(cardData);
+// function addCard(cardData, cardContainer) {
+//   const card = createCard(cardData);
   
-  ...
-}
-formCards.addEventListener('submit', (evt) => {
-  ...
-  addCard({
-    name: БЕРЕШЬ DOM-ELEMENT (НУЖНЫЙ INPUT В РАЗМЕТКЕ) И ВЫВОДИШЬ ЕГО VALUE,
-    link: БЕРЕШЬ DOM-ELEMENT (НУЖНЫЙ INPUT В РАЗМЕТКЕ) И ВЫВОДИШЬ ЕГО VALUE
-  }, cardsList);
-  ...
-})
-initialCards.forEach ((item) => {
-  ...
-  addCard(item, cardsList)
-})
+//   ...
+// }
+// formCards.addEventListener('submit', (evt) => {
+//   ...
+//   addCard({
+//     name: БЕРЕШЬ DOM-ELEMENT (НУЖНЫЙ INPUT В РАЗМЕТКЕ) И ВЫВОДИШЬ ЕГО VALUE,
+//     link: БЕРЕШЬ DOM-ELEMENT (НУЖНЫЙ INPUT В РАЗМЕТКЕ) И ВЫВОДИШЬ ЕГО VALUE
+//   }, cardsList);
+//   ...
+// })
+// initialCards.forEach ((item) => {
+//   ...
+//   addCard(item, cardsList)
+// })
 
 
 
@@ -199,19 +184,9 @@ initialCards.forEach ((item) => {
 //   });
 // });
 
-<<<<<<< Updated upstream
-let likeBtns = document.querySelectorAll ('.elements__vector');
-console.log(likeBtns)
-likeBtns.forEach((elem)=>{
-  elem.addEventListener('click',()=>{
-      elem.parentNode.querySelector('.elements__vector').classList.toggle('elements__vector_active');
-  });
-});
-=======
 
 
 
->>>>>>> Stashed changes
 
 
 
