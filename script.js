@@ -1,20 +1,28 @@
-let popup = document.querySelector ('.popup');
-const cardTemplate = document.querySelector ('#card-template').content;
+// Попап редактирования профиля
 let popupEdit = document.querySelector ('.popup_edit');
+let inputname = popupEdit.querySelector ('.popup__item_el_name');
+let inputtext = popupEdit.querySelector ('.popup__item_el_text');
+
+// Попап редактирования карточки
 let popupAddcards = document.querySelector ('.popup_addcard');
+let palceInput = popupAddcards.querySelector ('.popup__item_el_place');
+let linkInput = popupAddcards.querySelector ('.popup__item_el_link');
+
+// Профиль
 let profname = document.querySelector ('.profile__name');
 let proftext = document.querySelector ('.profile__text');
-let inputname = document.querySelector ('.popup__item_el_name');
-let inputtext = document.querySelector ('.popup__item_el_text');
 
+// Функция открытия попапа
 function openPopup (popup) {
   popup.classList.add ('popup_opened');
 };
 
+// Функция закрытия попапа
 function closePopup (popup) {
   popup.classList.remove ('popup_opened');
 };
 
+// Функция закрытия крестиком
 function setEventListenerCloseBtn() {
   const popupCloseBtns = document.querySelectorAll(".popup__btn-close");
   popupCloseBtns.forEach(button => {
@@ -24,6 +32,7 @@ function setEventListenerCloseBtn() {
   });
 };
 
+// Открытие попапа с заполнением инпутов
 let editbtn = document.querySelector ('.profile__edit-button');
   editbtn.addEventListener('click', function () {
     openPopup(popupEdit);
@@ -31,71 +40,43 @@ let editbtn = document.querySelector ('.profile__edit-button');
     inputtext.value = proftext.innerText;
   });
 
+// Открытие попапа редактирования карточек
 let addbtn = document.querySelector ('.profile__add-button');
   addbtn.addEventListener ('click', function () {
     openPopup(popupAddcards);
-  });  
+  }); 
 
+// Закрытие попапов с крестика
 let closebtn = document.querySelector ('.popup__btn-close');
   closebtn.addEventListener ('click', function (){
     setEventListenerCloseBtn();
 });
 
-let savebtn = document.querySelector ('.popup__btn-save');
-  savebtn.addEventListener ('click', function (){
-    
-});
-
-
-const itemsElements = document.querySelector  ('.elements__items');
- 
-
 //Форма добавления карточки
 let formAddPlace = document.querySelector ('.popup__form_addcard');
 const formAddCard = formAddPlace;
-const palceInput = formAddCard.querySelector ('.popup__item_el_place');
-const linkInput = formAddCard.querySelector ('.popup__item_el_link');
-function formSubmit (evt) {
-  evt.preventDefault (); 
-  const itemElement = cardTemplate.querySelector('.elements__item').cloneNode(true); 
-  itemElement.querySelector ('.elements__image').src = linkInput.value;
-  itemElement.querySelector ('.elements__name').textContent = palceInput.value;
-  itemsElements.prepend(itemElement);
-  
+formAddCard.addEventListener ('submit', (evt) => {
+  evt.preventDefault ();
+  const cardData = { 
+    name: palceInput.value, 
+    link: linkInput.value, 
+  };
+  formAddCard.reset ();
+  addCard (cardData);
   closePopup (popupAddcards);
-  
-  
-}
+});
 
-formAddCard.addEventListener('submit', formSubmit);
-
-// Форма редактирования
+// Форма редактирования профиля
 let formedit = document.querySelector ('.popup__form_edit');
 const formElement = formedit;
-// Воспользуйтесь методом querySelector()
-// Находим поля формы в DOM
 const nameInput = formElement.querySelector ('.popup__item_el_name');
-// Воспользуйтесь инструментом .querySelector()
 const jobInput = formElement.querySelector ('.popup__item_el_text');
-// Воспользуйтесь инструментом .querySelector()
-// Обработчик «отправки» формы, хотя пока
-// она никуда отправляться не будет
 function formSubmitHandler (evt) {
   evt.preventDefault(); 
-// Эта строчка отменяет стандартную отправку формы.  
-// Так мы можем определить свою логику отправки.                       
-// О том, как это делать, расскажем позже.
   profname.textContent = nameInput.value;
   proftext.innerHTML = jobInput.value;
   closePopup (popupEdit);
-// Получите значение полей jobInput и nameInput из свойства value
-// Выберите элементы, куда должны быть вставлены значения полей
-// Вставьте новые значения с помощью textContent
-
-}
-// Прикрепляем обработчик к форме:
-// он будет следить за событием “submit” - «отправка»
-
+};
 formElement.addEventListener('submit', formSubmitHandler);
 
 // Массив с готовым содержимым карточек
@@ -128,40 +109,35 @@ const initialCards = [
 
 // Подгрузка карточек из массива
 function createcards () {
-  for (let i = 0; i <= initialCards.length - 1; i++) {
-    const itemElement = cardTemplate.querySelector('.elements__item').cloneNode(true);
-    itemElement.querySelector ('.elements__image').src = initialCards[i].link;
-    itemElement.querySelector ('.elements__name').textContent = initialCards[i].name;
-    
-    itemsElements.prepend(itemElement);
-    
-  } 
-}
+  initialCards.forEach ( (cardData) => {
+    addCard(cardData);
+  });     
+}; 
 createcards ();
 
-// function createCard (cardData) {
-//   const cardElement = cardTemplate.querySelector ('.elements__item').cloneNode(true); 
-//   const elementImage = cardElement.querySelector ('.elements__image');
-//   const elementText = cardElement.querySelector ('.elements__name');
-//   const elementTrash = cardElement.querySelector ('.elements__trash');
-//   const elementLikebtn = cardElement.querySelector ('.elements__vector');
-  
-//   elementImage.setAttribute('src', cardData.link);
-//   elementImage.setAttribute('alt', cardData.name);
-//   elementLikebtn.addEventListener ('click', () => {
-//     elementLikebtn.classList.toggle ('elements__vector_active');
-//   });
+function createCard (cardData) {
+  const cardTemplate = document.querySelector ('#card-template').content;
+  const cardElement = cardTemplate.querySelector ('.elements__item').cloneNode(true); 
+  cardElement.querySelector ('.elements__image').src = `${cardData.link}`;
+  cardElement.querySelector ('.elements__name').textContent = `${cardData.name}`;
 
-//    return cardElement
+  cardElement.querySelector ('.elements__vector').addEventListener ('click', (evt) => {
+    evt.target.classList.toggle ('elements__vector_active');
+  });
+
+  cardElement.querySelector ('.elements__trash').addEventListener('click', (evt) => {
+    evt.target.closest ('.elements__item').remove ()
+  });
+
+  return cardElement
    
-// }
+}
 
-
-// function addCard(cardData, cardContainer) {
-//   const card = createCard(cardData);
+function addCard(cardData) {
+  const card = document.querySelector ('.elements__items');
+  card.prepend (createCard (cardData));
   
-//   ...
-// }
+};
 // formCards.addEventListener('submit', (evt) => {
 //   ...
 //   addCard({
