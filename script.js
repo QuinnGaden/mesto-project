@@ -8,6 +8,11 @@ let popupAddcards = document.querySelector ('.popup_addcard');
 let palceInput = popupAddcards.querySelector ('.popup__item_el_place');
 let linkInput = popupAddcards.querySelector ('.popup__item_el_link');
 
+// Попап фотографии
+let popupPhoto = document.querySelector ('.popup_photo');
+let popupImage = document.querySelector ('.popup__image');
+let popupFigcaption = document.querySelector ('.popup__figcaption');
+
 // Профиль
 let profname = document.querySelector ('.profile__name');
 let proftext = document.querySelector ('.profile__text');
@@ -31,6 +36,13 @@ function setEventListenerCloseBtn() {
     }); 
   });
 };
+
+// Функция открытия попапа картинки
+function openPopupPhoto (cardData) {
+  popupImage.src = `${cardData.link}`;
+  popupFigcaption.textContent = `${cardData.name}`;
+  openPopup (popupPhoto);
+}
 
 // Открытие попапа с заполнением инпутов
 let editbtn = document.querySelector ('.profile__edit-button');
@@ -129,6 +141,8 @@ function createCard (cardData) {
     evt.target.closest ('.elements__item').remove ()
   });
 
+  cardElement.querySelector ('.elements__image').addEventListener('click', () => openPopupPhoto (cardData));
+
   return cardElement
    
 }
@@ -138,33 +152,4 @@ function addCard(cardData) {
   card.prepend (createCard (cardData));
   
 };
-// formCards.addEventListener('submit', (evt) => {
-//   ...
-//   addCard({
-//     name: БЕРЕШЬ DOM-ELEMENT (НУЖНЫЙ INPUT В РАЗМЕТКЕ) И ВЫВОДИШЬ ЕГО VALUE,
-//     link: БЕРЕШЬ DOM-ELEMENT (НУЖНЫЙ INPUT В РАЗМЕТКЕ) И ВЫВОДИШЬ ЕГО VALUE
-//   }, cardsList);
-//   ...
-// })
-// initialCards.forEach ((item) => {
-//   ...
-//   addCard(item, cardsList)
-// })
-
-
-
-// let likeBtns = document.querySelectorAll ('.elements__vector');
-// likeBtns.forEach((button)=>{
-//   button.addEventListener('click',()=>{
-//       button.classList.toggle('elements__vector_active');
-//   });
-// });
-
-
-
-
-
-
-
-
  
