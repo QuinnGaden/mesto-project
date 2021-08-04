@@ -1,13 +1,13 @@
 // Попап редактирования профиля
-const popupEdit = document.querySelector('.popup_edit');
+const popupEdit = document.querySelector('.popup_type_edit');
 const inputname = popupEdit.querySelector('.popup__item_el_name');
 const inputtext = popupEdit.querySelector('.popup__item_el_text');
 // Попап редактирования карточки
-const popupAddСard = document.querySelector('.popup_addcard');
+const popupAddСard = document.querySelector('.popup_type_addcard');
 const placeInput = popupAddСard.querySelector('.popup__item_el_place');
 const linkInput = popupAddСard.querySelector('.popup__item_el_link');
 // Попап фотографии
-const popupPhoto = document.querySelector('.popup_photo');
+const popupPhoto = document.querySelector('.popup_type_photo');
 const popupImage = document.querySelector('.popup__image');
 const popupFigcaption = document.querySelector('.popup__figcaption');
 // Профиль
@@ -56,7 +56,7 @@ addbtn.addEventListener('click', function () {
   openPopup(popupAddСard);
 });
 //Форма добавления карточки
-const formAddPlace = document.querySelector('.popup__form_addcard');
+const formAddPlace = document.querySelector('.popup__form_type_addcard');
 formAddPlace.addEventListener('submit', (evt) => {
   evt.preventDefault();
   const cardData = {
@@ -68,7 +68,7 @@ formAddPlace.addEventListener('submit', (evt) => {
   closePopup(popupAddСard);
 });
 // Форма редактирования профиля
-const formedit = document.querySelector('.popup__form_edit');
+const formedit = document.querySelector('.popup__form_type_edit');
 const nameInput = formedit .querySelector('.popup__item_el_name');
 const jobInput = formedit .querySelector('.popup__item_el_text');
 function HandlerformSubmit(evt) {
