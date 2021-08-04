@@ -38,48 +38,42 @@
       &copy; 2020 Mesto Russia
     </p>
   </footer>
-
+<!-- Попап редактирование профиля -->
   <div class= "popup popup_edit"> 
-    <div class= "popup__conteiner"> 
-      <form class= "popup__form popup__form_edit" method= "POST" name= "profile">
-        <h3 class= "popup__title">
-          Редактировать профиль
-        </h3>
-        <fieldset class= "popup__profile-info">
-          <input class= "popup__item popup__item_el_name" type= "text" name= "name" placeholder= "Имя" value= "">
-          <input class= "popup__item popup__item_el_text" type= "text" name= "about" placeholder= "О себе" value= "">        
-        </fieldset>
-        <button class= "popup__btn-save" type= "submit">
-          Сохранить
-        </button>
-        
-      </form>
+    <form class= "popup__form popup__form_edit" method= "POST" name= "profile">
+      <h3 class= "popup__title">
+        Редактировать профиль
+      </h3>
+      <fieldset class= "popup__profile-info">
+        <input class= "popup__item popup__item_el_name" type= "text" name= "name" placeholder= "Имя" value= "">
+        <input class= "popup__item popup__item_el_text" type= "text" name= "about" placeholder= "О себе" value= "">        
+      </fieldset>
+      <button class= "popup__btn-save" type= "submit">
+        Сохранить
+      </button>
       <button class= "popup__btn-close" type= "button">
 
       </button>
-    </div> 
+    </form>   
   </div>
 
 <!-- Попап добавления -->
   <div class= "popup popup_addcard">
-    <div class= "popup__conteiner"> 
-      <form class= "popup__form popup__form_addcard" method= "POST" name= "addcard">
-        <h3 class= "popup__title">
-          Новое место
-        </h3>
-        <fieldset class= "popup__profile-info">
-          <input class= "popup__item popup__item_el_place" type= "text" name= "place" placeholder= "Название" value= "">
-          <input class= "popup__item popup__item_el_link" type= "text" name= "link" placeholder= "Ссылка на картинку" value= "">        
-        </fieldset>
-        <button class= "popup__btn-save" type= "submit">
-          Создать
-        </button>
-        
-      </form>
+    <form class= "popup__form popup__form_addcard" method= "POST" name= "addcard">
+      <h3 class= "popup__title">
+        Новое место
+      </h3>
+      <fieldset class= "popup__profile-info">
+        <input class= "popup__item popup__item_el_place" type= "text" name= "place" placeholder= "Название" value= "">
+        <input class= "popup__item popup__item_el_link" type= "text" name= "link" placeholder= "Ссылка на картинку" value= "">        
+      </fieldset>
+      <button class= "popup__btn-save" type= "submit">
+        Создать
+      </button>
       <button class= "popup__btn-close" type= "button">
 
       </button>
-    </div>
+    </form>    
   </div>
 
 <!-- Попап фотографии -->

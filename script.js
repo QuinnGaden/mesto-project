@@ -30,12 +30,14 @@ function closePopup (popup) {
 // Функция закрытия крестиком
 function setEventListenerCloseBtn() {
   const popupCloseBtns = document.querySelectorAll(".popup__btn-close");
+  
   popupCloseBtns.forEach(button => {
       button.addEventListener("click", (evt) => {
       evt.target.closest('.popup').classList.remove('popup_opened');
     }); 
   });
 };
+setEventListenerCloseBtn();
 
 // Функция открытия попапа картинки
 function openPopupPhoto (cardData) {
@@ -126,7 +128,7 @@ function createcards () {
   });     
 }; 
 createcards ();
-
+// Функция создания карточки
 function createCard (cardData) {
   const cardTemplate = document.querySelector ('#card-template').content;
   const cardElement = cardTemplate.querySelector ('.elements__item').cloneNode(true); 
@@ -146,10 +148,9 @@ function createCard (cardData) {
   return cardElement
    
 }
-
+// Функция добавление карточки
 function addCard(cardData) {
   const card = document.querySelector ('.elements__items');
-  card.prepend (createCard (cardData));
-  
+  card.prepend (createCard (cardData));  
 };
  
