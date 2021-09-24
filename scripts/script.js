@@ -72,10 +72,10 @@ const formEdit = document.querySelector('.popup__form_type_edit');
 const nameInput = formEdit .querySelector('.popup__item_el_name');
 const jobInput = formEdit .querySelector('.popup__item_el_text');
 function handlerProfileFormSubmit(evt) {
-  // evt.preventDefault();
+  evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileText.textContent = jobInput.value;
-  // closePopup(popupEdit);
+  closePopup(popupEdit);
 };
 formEdit.addEventListener('submit', handlerProfileFormSubmit);
 //Функция подгрузка карточек из массива
