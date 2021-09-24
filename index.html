@@ -40,15 +40,17 @@
   </footer>
 <!-- Попап редактирование профиля -->
   <div class= "popup popup_type_edit"> 
-    <form class= "popup__form popup__form_type_edit" method= "POST" name= "profile">
+    <form class= "popup__form popup__form_type_edit" method= "POST" name= "profile" novalidate>
       <h3 class= "popup__title">
         Редактировать профиль
       </h3>
       <fieldset class= "popup__profile-info">
-        <input class= "popup__item popup__item_el_name" type= "text" name= "name" required placeholder= "Имя" value= "">
-        <input class= "popup__item popup__item_el_text" type= "text" name= "about" required placeholder= "О себе" value= "">        
+        <input class= "popup__item popup__item_el_name" type= "text" name= "name" required placeholder= "Имя" value= "" minlength="2" maxlength= "40">
+        <span class= "popup__input-error" id= "name-error"></span>
+        <input class= "popup__item popup__item_el_text" type= "text" name= "about" required placeholder= "О себе" value= "" minlength="2" maxlength= "200">    
+        <span class= "popup__input-error" id= "about-error"></span>    
       </fieldset>
-      <button class= "popup__btn-save" type= "submit">
+      <button class= "popup__btn-save" type= "submit" disabled>
         Сохранить
       </button>
       <button class= "popup__btn-close" type= "button" type= "button" aria-label= "Закрыть" title="Закрыть">
@@ -58,13 +60,15 @@
   </div>
 <!-- Попап добавления -->
   <div class= "popup popup_type_addcard">
-    <form class= "popup__form popup__form_type_addcard" method= "POST" name= "addcard">
+    <form class= "popup__form popup__form_type_addcard" method= "POST" name= "addcard" novalidate>
       <h3 class= "popup__title">
         Новое место
       </h3>
       <fieldset class= "popup__profile-info">
         <input class= "popup__item popup__item_el_place" type= "text" name= "place"required placeholder= "Название" value= "">
-        <input class= "popup__item popup__item_el_link" type= "url" name= "link" required placeholder= "Ссылка на картинку" value= "">        
+        
+        <input class= "popup__item popup__item_el_link" type= "url" name= "link" required placeholder= "Ссылка на картинку" value= "">
+               
       </fieldset>
       <button class= "popup__btn-save" type= "submit">
         Создать

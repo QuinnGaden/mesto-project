@@ -14,7 +14,15 @@
   transition: opacity .2s linear;
 }
 
-.popup__btn-save:hover {
+.popup__btn-save[disabled] {
+  background: #FFF;
+  color: #000;
+  border: 1px solid #000;
+  opacity: .2;
+  cursor: auto;
+}
+
+.popup__btn-save:not([disabled]):hover {
   opacity: .8;
 }
 

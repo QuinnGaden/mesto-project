@@ -72,10 +72,10 @@ const formEdit = document.querySelector('.popup__form_type_edit');
 const nameInput = formEdit .querySelector('.popup__item_el_name');
 const jobInput = formEdit .querySelector('.popup__item_el_text');
 function handlerProfileFormSubmit(evt) {
-  evt.preventDefault();
+  // evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileText.textContent = jobInput.value;
-  closePopup(popupEdit);
+  // closePopup(popupEdit);
 };
 formEdit.addEventListener('submit', handlerProfileFormSubmit);
 //Функция подгрузка карточек из массива
@@ -106,3 +106,48 @@ function addCard(cardData) {
   const cardContainer = document.querySelector('.elements__items');
   cardContainer.prepend(createCard(cardData));
 };
+
+// включение валидации вызовом configs
+// все настройки передаются при вызове
+const configs = {
+  formSelector: '.popup__form_type_edit',
+  inputSelector: '.popup__item',
+  buttonSelector: '.popup__btn-save'
+};
+//Проверка инпутов на валидность и выводит текст ошибки
+const inputIsValid = (input) => {
+  const errorContainer = document.getElementById(`${input.name}-error`);
+  if (!input.validity.valid) {
+    errorContainer.textContent = input.validationMessage;    
+  } else {
+    errorContainer.textContent = '';    
+  } 
+};
+// Включает кнопку если форма валидна
+const enableButtonIfFormIsValid = (form, inputs, buttonSelector) => {
+  const button = form.querySelector(buttonSelector);
+  const formIsValid = inputs.every(input => input.validity.valid);
+  if (formIsValid) {
+    button.removeAttribute('disabled');
+  } else {
+    button.setAttribute('disabled', 'disabled');
+  }
+};
+
+// Проверяет валидность формы
+const enableValidation = (config) => {
+  const form = document.querySelector(config.formSelector);
+  
+  form.addEventListener('submit', (eve)=> {
+    eve.preventDefault();    
+    console.log('submitted');    
+  });
+  const inputs = Array.from(form.querySelectorAll(config.inputSelector));
+  inputs.forEach (input => {
+    input.addEventListener('input', (eve) => {
+      inputIsValid(input);
+      enableButtonIfFormIsValid(form, inputs, config.buttonSelector);
+    });
+  });
+};
+enableValidation(configs);
