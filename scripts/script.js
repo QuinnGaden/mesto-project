@@ -25,6 +25,16 @@ function openPopup(popup) {
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
 };
+// Закрытие pop-up's нажатитем на фон 
+const popups = document.querySelectorAll('.popup');
+popups.forEach( popup => {
+  popup.addEventListener('click', (eve) => {
+    if(eve.target === eve.currentTarget) {
+      closePopup(popup);
+    };
+  }); 
+});
+
 // Функция закрытия крестиком
 function setEventListenerCloseBtn() {
   const popupCloseBtns = document.querySelectorAll('.popup__btn-close');
