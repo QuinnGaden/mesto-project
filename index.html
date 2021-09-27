@@ -65,10 +65,10 @@
         Новое место
       </h3>
       <fieldset class= "popup__profile-info">
-        <input class= "popup__item popup__item_el_place" type= "text" name= "place"required placeholder= "Название" value= "">
-        
+        <input class= "popup__item popup__item_el_place" type= "text" name= "place"required placeholder= "Название" value= "" minlength="2" maxlength= "20">
+        <span class= "popup__input-error" id= "place-error"></span>
         <input class= "popup__item popup__item_el_link" type= "url" name= "link" required placeholder= "Ссылка на картинку" value= "">
-               
+        <span class= "popup__input-error" id= "link-error"></span>      
       </fieldset>
       <button class= "popup__btn-save" type= "submit">
         Создать

@@ -31,7 +31,7 @@ function setEventListenerCloseBtn() {
   popupCloseBtns.forEach(button => { 
     button.addEventListener("click", (evt) => {    
       const closestPopup = evt.target.closest('.popup');
-      closePopup(closestPopup);
+      closePopup(closestPopup);      
     });
   });  
 };
@@ -41,18 +41,18 @@ function openPopupPhoto(cardData) {
   popupImage.src = `${cardData.link}`;
   popupImage.alt = `${cardData.name}`;
   popupFigcaption.textContent = `${cardData.name}`;
-  openPopup(popupPhoto);
+  openPopup(popupPhoto);  
 }
 // Открытие попапа с заполнением инпутов
 const openEditFormButton = document.querySelector('.profile__edit-button');
 openEditFormButton.addEventListener('click', function () {
   openPopup(popupEdit);
   inputName.value = profileName.textContent;
-  inputText.value = profileText.textContent;
+  inputText.value = profileText.textContent;  
 });
 // Открытие попапа редактирования карточек
 const openCardFormButton = document.querySelector('.profile__add-button');
-openCardFormButton.addEventListener('click', function () {
+openCardFormButton.addEventListener('click', function () {  
   openPopup(popupAddСard);
 });
 //Форма добавления карточки
@@ -110,7 +110,7 @@ function addCard(cardData) {
 // включение валидации вызовом configs
 // все настройки передаются при вызове
 const configs = {
-  formSelector: '.popup__form_type_edit',
+  formSelector: '.popup__form',   
   inputSelector: '.popup__item',
   buttonSelector: '.popup__btn-save'
 };
@@ -134,20 +134,20 @@ const enableButtonIfFormIsValid = (form, inputs, buttonSelector) => {
   }
 };
 
-// Проверяет валидность формы
+// Включение валидации
 const enableValidation = (config) => {
-  const form = document.querySelector(config.formSelector);
-  
-  form.addEventListener('submit', (eve)=> {
-    eve.preventDefault();    
-    console.log('submitted');    
-  });
-  const inputs = Array.from(form.querySelectorAll(config.inputSelector));
-  inputs.forEach (input => {
-    input.addEventListener('input', (eve) => {
-      inputIsValid(input);
-      enableButtonIfFormIsValid(form, inputs, config.buttonSelector);
+  const forms = document.querySelectorAll(config.formSelector);
+  forms.forEach((form) => {
+    form.addEventListener('submit', (eve)=> {
+      eve.preventDefault();        
     });
-  });
+    const inputs = Array.from(form.querySelectorAll(config.inputSelector));
+    inputs.forEach (input => {
+      input.addEventListener('input', (eve) => {
+        inputIsValid(input);
+        enableButtonIfFormIsValid(form, inputs, config.buttonSelector);
+      });
+    });
+  });  
 };
 enableValidation(configs);
