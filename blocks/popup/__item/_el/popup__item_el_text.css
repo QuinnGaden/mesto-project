@@ -1,4 +1,5 @@
-.popup__item_el_text {
+.popup__item_el_text {  
+  margin-bottom: 5px;
   font-size: 14px;
   line-height: 17px;
   font-weight: normal;
