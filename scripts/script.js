@@ -38,7 +38,7 @@ function closePopoupEsc(evt) {
 //Функция закрытия уже открытого popup
 function closeOpenedPopup() {
   const popupActive = document.querySelector('.popup_opened');
-      closePopup(popupActive);
+    closePopup(popupActive);
 }  
 // Функция закрытия крестиком
 function setEventListenerCloseBtn() {
@@ -119,7 +119,6 @@ function addCard(cardData) {
   const cardContainer = document.querySelector('.elements__items');
   cardContainer.prepend(createCard(cardData));
 };
-
 // включение валидации вызовом configs
 // все настройки передаются при вызове
 const configs = {
