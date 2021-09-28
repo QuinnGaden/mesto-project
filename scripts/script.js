@@ -126,8 +126,10 @@ const configs = {
 const inputIsValid = (input) => {
   const errorContainer = document.getElementById(`${input.name}-error`);
   if (!input.validity.valid) {
+    input.classList.add('popup__item_type_error');
     errorContainer.textContent = input.validationMessage;    
   } else {
+    input.classList.remove('popup__item_type_error');
     errorContainer.textContent = '';    
   } 
 };
