@@ -28,7 +28,7 @@ function closePopup(popup) {
 // Закрытие pop-up's нажатитем на фон 
 const popups = document.querySelectorAll('.popup');
 popups.forEach( popup => {
-  popup.addEventListener('click', (eve) => {
+  popup.addEventListener('mousedown', (eve) => {
     if(eve.target === eve.currentTarget) {
       closePopup(popup);
     };
@@ -67,8 +67,7 @@ openCardFormButton.addEventListener('click', function () {
 });
 //Форма добавления карточки
 const formAddPlace = document.querySelector('.popup__form_type_addcard');
-formAddPlace.addEventListener('submit', (evt) => {
-  evt.preventDefault();
+formAddPlace.addEventListener('submit', () => {  
   const cardData = {
     name: placeInput.value,
     link: linkInput.value,
@@ -81,8 +80,7 @@ formAddPlace.addEventListener('submit', (evt) => {
 const formEdit = document.querySelector('.popup__form_type_edit');
 const nameInput = formEdit .querySelector('.popup__item_el_name');
 const jobInput = formEdit .querySelector('.popup__item_el_text');
-function handlerProfileFormSubmit(evt) {
-  evt.preventDefault();
+function handlerProfileFormSubmit() {  
   profileName.textContent = nameInput.value;
   profileText.textContent = jobInput.value;
   closePopup(popupEdit);
@@ -146,7 +144,7 @@ const enableButtonIfFormIsValid = (form, inputs, buttonSelector) => {
 
 // Включение валидации
 const enableValidation = (config) => {
-  const forms = document.querySelectorAll(config.formSelector);
+  const forms = Array.from(document.querySelectorAll(config.formSelector));
   forms.forEach((form) => {
     form.addEventListener('submit', (eve)=> {
       eve.preventDefault();        
