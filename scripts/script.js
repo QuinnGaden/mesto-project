@@ -22,8 +22,8 @@ function openPopup(popup) {
   popup.classList.add('popup_opened');
 };
 // Функция закрытия попапа
-function closePopup(popup) {
-  popup.classList.remove('popup_opened');
+function closePopup(popup) {  
+  popup.classList.remove('popup_opened');  
 };
 // Закрытие pop-up's нажатитем на фон 
 const popups = document.querySelectorAll('.popup');
@@ -34,7 +34,6 @@ popups.forEach( popup => {
     };
   }); 
 });
-
 // Функция закрытия крестиком
 function setEventListenerCloseBtn() {
   const popupCloseBtns = document.querySelectorAll('.popup__btn-close');
@@ -55,7 +54,7 @@ function openPopupPhoto(cardData) {
 }
 // Открытие попапа с заполнением инпутов
 const openEditFormButton = document.querySelector('.profile__edit-button');
-openEditFormButton.addEventListener('click', function () {
+openEditFormButton.addEventListener('click', function () {  
   openPopup(popupEdit);
   inputName.value = profileName.textContent;
   inputText.value = profileText.textContent;  
@@ -118,6 +117,7 @@ function addCard(cardData) {
 // включение валидации вызовом configs
 // все настройки передаются при вызове
 const configs = {
+  popupSelector: '.popup',
   formSelector: '.popup__form',   
   inputSelector: '.popup__item',
   buttonSelector: '.popup__btn-save'
@@ -148,8 +148,8 @@ const enableButtonIfFormIsValid = (form, inputs, buttonSelector) => {
 const enableValidation = (config) => {
   const forms = Array.from(document.querySelectorAll(config.formSelector));
   forms.forEach((form) => {
-    form.addEventListener('submit', (eve)=> {
-      eve.preventDefault();        
+    form.addEventListener('submit', (eve)=> {      
+      eve.preventDefault();            
     });
     const inputs = Array.from(form.querySelectorAll(config.inputSelector));
     inputs.forEach (input => {
