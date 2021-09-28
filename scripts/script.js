@@ -19,21 +19,27 @@ const cardTemplate = document.querySelector('#card-template').content;
 const templateImage = document.querySelector('.elements__image');
 // Функция открытия попапа
 function openPopup(popup) {
-  popup.classList.add('popup_opened');
+  popup.classList.add('popup_opened'); 
+  document.addEventListener('keydown', closePopoupEsc); 
+  popup.addEventListener('mousedown', closeOpenedPopup);
 };
 // Функция закрытия попапа
 function closePopup(popup) {  
   popup.classList.remove('popup_opened');  
+  document.addEventListener('keydown', closePopoupEsc); 
+  popup.addEventListener('mousedown', closeOpenedPopup);
 };
-// Закрытие pop-up's нажатитем на фон 
-const popups = document.querySelectorAll('.popup');
-popups.forEach( popup => {
-  popup.addEventListener('mousedown', (eve) => {
-    if(eve.target === eve.currentTarget) {
-      closePopup(popup);
-    };
-  }); 
-});
+// функция закрытия popup по нажатию esc
+function closePopoupEsc(evt) {  
+  if (evt.key === 'Escape') {    
+    closeOpenedPopup();
+  };
+};
+//Функция закрытия уже открытого popup
+function closeOpenedPopup() {
+  const popupActive = document.querySelector('.popup_opened');
+      closePopup(popupActive);
+}  
 // Функция закрытия крестиком
 function setEventListenerCloseBtn() {
   const popupCloseBtns = document.querySelectorAll('.popup__btn-close');
@@ -143,7 +149,6 @@ const enableButtonIfFormIsValid = (form, inputs, buttonSelector) => {
     button.setAttribute('disabled', 'disabled');
   }
 };
-
 // Включение валидации
 const enableValidation = (config) => {
   const forms = Array.from(document.querySelectorAll(config.formSelector));
@@ -153,7 +158,7 @@ const enableValidation = (config) => {
     });
     const inputs = Array.from(form.querySelectorAll(config.inputSelector));
     inputs.forEach (input => {
-      input.addEventListener('input', (eve) => {
+      input.addEventListener('input', () => {
         inputIsValid(input);
         enableButtonIfFormIsValid(form, inputs, config.buttonSelector);
       });
