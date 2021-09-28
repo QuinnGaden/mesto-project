@@ -9,12 +9,13 @@
 </head>
 <body class= "page">
   <header class= "header page__section page__section_place_header">
-    <img class= "logo" src="./images/logo.svg" alt= "Лого"> 
+    <img class= "logo" src="./images/logo.svg" alt= "Лого">     
   </header>
   <main class= "content page__section">
     <section class= "profile">
       <div class= "profile__profile-info">
         <img class= "profile__image" src="./images/Avatarka.jpg" alt="Аватар">
+        <button class= "profile__image-button"></button>
         <div class= "profile__group">
           <h1 class= "profile__name">Жак-Ив Кусто</h1>
           <button id= "editbtn" class= "profile__edit-button" type= "button" aria-label= "Редактировать" title="Редактировать профиль">
@@ -38,45 +39,69 @@
       &copy; 2020 Mesto Russia
     </p>
   </footer>
+  <!-- Попап редактирования аватарки -->
+  <div class= "popup popup_type_avatar"> 
+    <div class= "popup__container">
+      <form class= "popup__form popup__form_type_avatar" method= "POST" name= "profile" novalidate>
+        <h3 class= "popup__title">
+          Обновить аватар
+        </h3>
+        <fieldset class= "popup__profile-info">        
+          <input class= "popup__item popup__item_el_link" type= "url" name= "link" required placeholder= "Ссылка на картинку" value= "">
+          <span class= "popup__input-error" id= "link-error"></span>      
+        </fieldset>
+        <button class= "popup__btn-save" type= "submit" disabled>
+          Сохранить
+        </button>
+        <button class= "popup__btn-close" type= "button" type= "button" aria-label= "Закрыть" title="Закрыть">
+
+        </button>
+      </form>
+    </div>   
+  </div>
 <!-- Попап редактирование профиля -->
   <div class= "popup popup_type_edit"> 
-    <form class= "popup__form popup__form_type_edit" method= "POST" name= "profile" novalidate>
-      <h3 class= "popup__title">
-        Редактировать профиль
-      </h3>
-      <fieldset class= "popup__profile-info">
-        <input class= "popup__item popup__item_el_name" type= "text" name= "name" required placeholder= "Имя" value= "" minlength="2" maxlength= "40">
-        <span class= "popup__input-error" id= "name-error"></span>
-        <input class= "popup__item popup__item_el_text" type= "text" name= "about" required placeholder= "О себе" value= "" minlength="2" maxlength= "200">    
-        <span class= "popup__input-error" id= "about-error"></span>    
-      </fieldset>
-      <button class= "popup__btn-save" type= "submit" disabled>
-        Сохранить
-      </button>
-      <button class= "popup__btn-close" type= "button" type= "button" aria-label= "Закрыть" title="Закрыть">
+    <div class= "popup__container">
+      <form class= "popup__form popup__form_type_edit" method= "POST" name= "profile" novalidate>
+        <h3 class= "popup__title">
+          Редактировать профиль
+        </h3>
+        <fieldset class= "popup__profile-info">
+          <input class= "popup__item popup__item_el_name" type= "text" name= "name" required placeholder= "Имя" value= "" minlength="2" maxlength= "40">
+          <span class= "popup__input-error" id= "name-error"></span>
+          <input class= "popup__item popup__item_el_text" type= "text" name= "about" required placeholder= "О себе" value= "" minlength="2" maxlength= "200">    
+          <span class= "popup__input-error" id= "about-error"></span>    
+        </fieldset>
+        <button class= "popup__btn-save" type= "submit" disabled>
+          Сохранить
+        </button>
+        <button class= "popup__btn-close" type= "button" type= "button" aria-label= "Закрыть" title="Закрыть">
 
-      </button>
-    </form>   
+        </button>
+      </form>
+    </div>     
   </div>
 <!-- Попап добавления -->
   <div class= "popup popup_type_addcard">
-    <form class= "popup__form popup__form_type_addcard" method= "POST" name= "addcard" novalidate>
-      <h3 class= "popup__title">
-        Новое место
-      </h3>
-      <fieldset class= "popup__profile-info">
-        <input class= "popup__item popup__item_el_place" type= "text" name= "place"required placeholder= "Название" value= "" minlength="2" maxlength= "20">
-        <span class= "popup__input-error" id= "place-error"></span>
-        <input class= "popup__item popup__item_el_link" type= "url" name= "link" required placeholder= "Ссылка на картинку" value= "">
-        <span class= "popup__input-error" id= "link-error"></span>      
-      </fieldset>
-      <button class= "popup__btn-save" type= "submit">
-        Создать
-      </button>
-      <button class= "popup__btn-close" type= "button" aria-label= "Закрыть" title="Закрыть">
+    <div class= "popup__container">
+      <form class= "popup__form popup__form_type_addcard" method= "POST" name= "addcard" novalidate>
+        <h3 class= "popup__title">
+          Новое место
+        </h3>
+        <fieldset class= "popup__profile-info">
+          <input class= "popup__item popup__item_el_place" type= "text" name= "place"required placeholder= "Название" value= "" minlength="2" maxlength= "20">
+          <span class= "popup__input-error" id= "place-error"></span>
+          <input class= "popup__item popup__item_el_link" type= "url" name= "link" required placeholder= "Ссылка на картинку" value= "">
+          <span class= "popup__input-error" id= "link-error"></span>      
+        </fieldset>
+        <button class= "popup__btn-save" type= "submit">
+          Создать
+        </button>
+        <button class= "popup__btn-close" type= "button" aria-label= "Закрыть" title="Закрыть">
 
-      </button>
-    </form>    
+        </button>
+      </form>
+    </div>
   </div>
 <!-- Попап фотографии -->
   <div class= "popup popup_type_photo">
