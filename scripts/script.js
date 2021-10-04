@@ -1,3 +1,6 @@
+//  Попап редактирования аватарки
+const popupAvatarEdit = document.querySelector('.popup_type_avatar');
+const avatarImage = document.querySelectorAll('.profile__image');
 // Попап редактирования профиля
 const popupEdit = document.querySelector('.popup_type_edit');
 const inputName = popupEdit.querySelector('.popup__item_el_name');
@@ -17,6 +20,8 @@ const profileText = document.querySelector('.profile__text');
 const cardTemplate = document.querySelector('#card-template').content;
 // Картинка из темплейта
 const templateImage = document.querySelector('.elements__image');
+// Все контейнеры попапов
+const popupContainers = document.querySelectorAll('.popup__container');
 // Функция открытия попапа
 function openPopup(popup) {
   popup.classList.add('popup_opened'); 
@@ -37,9 +42,15 @@ function closePopoupEsc(evt) {
 };
 //Функция закрытия уже открытого popup
 function closeOpenedPopup() {
-  const popupActive = document.querySelector('.popup_opened');
-    closePopup(popupActive);
+  const popupActive = document.querySelector('.popup_opened');  
+    closePopup(popupActive);    
 }  
+// Остановили всплытие на попап контейнере, чтобы при клике на форму она не закрывалась
+popupContainers.forEach((container) => {
+  container.addEventListener('mousedown', (evt) => {
+    evt.stopPropagation();
+  });
+});
 // Функция закрытия крестиком
 function setEventListenerCloseBtn() {
   const popupCloseBtns = document.querySelectorAll('.popup__btn-close');
@@ -58,6 +69,11 @@ function openPopupPhoto(cardData) {
   popupFigcaption.textContent = `${cardData.name}`;
   openPopup(popupPhoto);  
 }
+// Открытие попапа редактирования аватарки
+const openEditAvatarButton = document.querySelector('.profile__image-button');
+openEditAvatarButton.addEventListener('click', () =>{
+  openPopup(popupAvatarEdit);
+});
 // Открытие попапа с заполнением инпутов
 const openEditFormButton = document.querySelector('.profile__edit-button');
 openEditFormButton.addEventListener('click', function () {  
@@ -70,6 +86,12 @@ const openCardFormButton = document.querySelector('.profile__add-button');
 openCardFormButton.addEventListener('click', function () {  
   openPopup(popupAddСard);
 });
+// Форма изменения аватарки
+const formEditAvatarImage = document.querySelector('.popup__form_type_avatar');
+formEditAvatarImage.addEventListener('submit', () => {
+  avatarImage.src = linkInput.value;
+});
+
 //Форма добавления карточки
 const formAddPlace = document.querySelector('.popup__form_type_addcard');
 formAddPlace.addEventListener('submit', () => {  
