@@ -10,7 +10,8 @@
   background-size: 26px;
   background-repeat: no-repeat;  
   background-position: center;
-  opacity: 0;   
+  opacity: 0;
+  cursor: pointer;   
 }
 
 .profile__image-button:hover {

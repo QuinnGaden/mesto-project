@@ -42,6 +42,7 @@
 @import url(../blocks/popup/__item/_el/popup__item_el_text.css);
 @import url(../blocks/popup/__item/_el/popup__item_el_place.css);
 @import url(../blocks/popup/__item/_el/popup__item_el_link.css);
+@import url(../blocks/popup/__item/_el/popup__item_el_url.css);
 @import url(../blocks/popup/__profile-info/popup__profile-info.css);
 @import url(../blocks/popup/__btn-close/popup__btn-close.css);
 @import url(../blocks/popup/__container/popup__container.css);
