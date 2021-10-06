@@ -1,0 +1,19 @@
+{
+  "name": "mesto-project",
+  "version": "1.0.0",
+  "description": "Сайт создавалася как фотогалерея, где пользователь в будущем сможет завести свой профиль и заливать на него фотографии красивых мест, которые он успел посетить. На сайте присутствует, \"Имя\" - пользователя, не большой раздел о себе, и не сама фотогалерея.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/QuinnGaden/mesto-project.git"
+  },
+  "author": "Nikita",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/QuinnGaden/mesto-project/issues"
+  },
+  "homepage": "https://github.com/QuinnGaden/mesto-project#readme"
+}
