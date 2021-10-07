@@ -27,6 +27,7 @@ const enableButtonIfFormIsValid = (form, inputs, buttonSelector) => {
   } else {
     button.setAttribute('disabled', 'disabled');
   }
+  
 };
 // Включение валидации
 const enableValidation = (config) => {
@@ -38,8 +39,10 @@ const enableValidation = (config) => {
     const inputs = Array.from(form.querySelectorAll(config.inputSelector));
     inputs.forEach (input => {
       input.addEventListener('input', () => {
+
         inputIsValid(input);
         enableButtonIfFormIsValid(form, inputs, config.buttonSelector);
+        
       });
     });
   });  

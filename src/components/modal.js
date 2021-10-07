@@ -1,4 +1,5 @@
 import { popupContainers } from './constants.js';
+import {clearInputValidation} from './validate.js';
 export {closePopup, openPopup};
 // Функция открытия попапа
 const openPopup = (popup) => {  
