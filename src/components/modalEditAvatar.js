@@ -10,6 +10,6 @@ openEditAvatarButton.addEventListener('click', () =>{
 // Форма изменения аватарки
 const formEditAvatarImage = document.querySelector('.popup__form_type_avatar');
 formEditAvatarImage.addEventListener('submit', () => {
-  avatarImage.src = urlInput.value;
+  avatarImage.src = urlInput.value;  
   closePopup(popupAvatarEdit);
 });

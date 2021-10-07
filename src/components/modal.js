@@ -7,7 +7,7 @@ const openPopup = (popup) => {
   popup.addEventListener('mousedown', closeOpenedPopup);
 };
 // Функция закрытия попапа
-const closePopup = (popup) => {  
+const closePopup = (popup) => {   
   popup.classList.remove('popup_opened');  
   document.addEventListener('keydown', closePopoupEsc); 
   popup.addEventListener('mousedown', closeOpenedPopup);
