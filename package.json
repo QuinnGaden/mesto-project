@@ -4,7 +4,8 @@
   "description": "Сайт создавалася как фотогалерея, где пользователь в будущем сможет завести свой профиль и заливать на него фотографии красивых мест, которые он успел посетить. На сайте присутствует, \"Имя\" - пользователя, не большой раздел о себе, и не сама фотогалерея.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack --mode production",
+    "dev": "webpack serve"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,23 @@
   "bugs": {
     "url": "https://github.com/QuinnGaden/mesto-project/issues"
   },
-  "homepage": "https://github.com/QuinnGaden/mesto-project#readme"
+  "homepage": "https://github.com/QuinnGaden/mesto-project#readme",
+  "devDependencies": {
+    "@babel/core": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "autoprefixer": "^10.3.7",
+    "babel-loader": "^8.2.2",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.3.0",
+    "cssnano": "^5.0.8",
+    "html-webpack-plugin": "^5.3.2",
+    "mini-css-extract-plugin": "^2.4.1",
+    "postcss-loader": "^6.1.1",
+    "webpack": "^5.57.1",
+    "webpack-cli": "^4.9.0",
+    "webpack-dev-server": "^4.3.1"
+  },
+  "dependencies": {
+    "core-js": "^3.18.2"
+  }
 }

@@ -1,3 +1,4 @@
+export {configs, enableValidation};
 // включение валидации вызовом configs
 // все настройки передаются при вызове
 const configs = {
@@ -43,5 +44,3 @@ const enableValidation = (config) => {
     });
   });  
 };
-// enableValidation(configs);
-export {configs, enableValidation};

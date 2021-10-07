@@ -1,3 +1,4 @@
+export {initialCards};
 // Массив с готовым содержимым карточек
 const initialCards = [
   {
