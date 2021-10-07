@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <link rel="stylesheet" href="./pages/index.css">
+    <!-- <link rel="stylesheet" href="./pages/index.css"> -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,13 +9,15 @@
 </head>
 <body class= "page">
   <header class= "header page__section page__section_place_header">
-    <img class= "logo" src="./images/logo.svg" alt= "Лого">     
+    <img class= "logo" src="<%=require('./images/logo.svg')%>" alt= "Лого">     
   </header>
   <main class= "content page__section">
     <section class= "profile">
       <div class= "profile__profile-info">
-        <img class= "profile__image" src="./images/Avatarka.jpg" alt="Аватар">
-        <button class= "profile__image-button"></button>
+        <div class= "profile__container">
+          <img class= "profile__image" src="<%=require('./images/Avatarka.jpg')%>" alt="Аватар">
+          <button class= "profile__image-button"></button>
+        </div>  
         <div class= "profile__group">
           <h1 class= "profile__name">Жак-Ив Кусто</h1>
           <button id= "editbtn" class= "profile__edit-button" type= "button" aria-label= "Редактировать" title="Редактировать профиль">
@@ -132,7 +134,7 @@
       </div>
     </li>
   </template>  
-  <script type= "module" src="./pages/script.js"></script>
+  <!-- <script type= "module" src="./pages/index.js"></script> -->
     
 </body>
 </html>

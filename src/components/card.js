@@ -1,22 +1,13 @@
-import {popupAddСard, placeInput, linkInput, cardTemplate} from './constants.js';
-//Форма добавления карточки
-const formAddPlace = document.querySelector('.popup__form_type_addcard');
-formAddPlace.addEventListener('submit', () => {  
-  const cardData = {
-    name: placeInput.value,
-    link: linkInput.value,
-  };
-  formAddPlace.reset();
-  addCard(cardData);
-  closePopup(popupAddСard);
-});
+import {cardTemplate} from './constants.js';
+import {initialCards} from './initial-сards.js';
+import {openPopupPhoto} from './modaImagePopup.js';
+export {renderArrCards, addCard};
 //Функция подгрузка карточек из массива
 function renderArrCards() {
   initialCards.forEach((cardData) => {
     addCard(cardData);
   });
 };
-renderArrCards();
 // Функция создания карточки
 function createCard(cardData) {
   const cardElement = cardTemplate.querySelector('.elements__item').cloneNode(true);

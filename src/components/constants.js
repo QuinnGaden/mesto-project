@@ -1,6 +1,10 @@
+export {popupAvatarEdit, avatarImage, popupEdit, inputName, inputText, popupAddСard, placeInput, linkInput, popupPhoto, popupImage, popupFigcaption, 
+  profileName, profileText, cardTemplate, templateImage, popupContainers, urlInput
+};
 //  Попап редактирования аватарки
 const popupAvatarEdit = document.querySelector('.popup_type_avatar');
-const avatarImage = document.querySelectorAll('.profile__image');
+const avatarImage = document.querySelector('.profile__image');
+const urlInput = document.querySelector('.popup__item_el_url');
 // Попап редактирования профиля
 const popupEdit = document.querySelector('.popup_type_edit');
 const inputName = popupEdit.querySelector('.popup__item_el_name');
@@ -22,7 +26,4 @@ const cardTemplate = document.querySelector('#card-template').content;
 const templateImage = document.querySelector('.elements__image');
 // Все контейнеры попапов
 const popupContainers = document.querySelectorAll('.popup__container');
-// экспорт
-export {popupAvatarEdit, avatarImage, popupEdit, inputName, inputText, popupAddСard, placeInput, linkInput, popupPhoto, popupImage, popupFigcaption, 
-  profileName, profileText, cardTemplate, templateImage, popupContainers
-};
+
