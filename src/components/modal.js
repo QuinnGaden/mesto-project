@@ -1,7 +1,7 @@
 import { popupContainers } from './constants.js';
 export {closePopup, openPopup};
 // Функция открытия попапа
-const openPopup = (popup) => {
+const openPopup = (popup) => {  
   popup.classList.add('popup_opened'); 
   document.addEventListener('keydown', closePopoupEsc); 
   popup.addEventListener('mousedown', closeOpenedPopup);
