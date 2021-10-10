@@ -1,5 +1,5 @@
 export {popupAvatarEdit, avatarImage, popupEdit, inputName, inputText, popupAddСard, placeInput, linkInput, popupPhoto, popupImage, popupFigcaption, 
-  profileName, profileText, cardTemplate, templateImage, popupContainers, urlInput
+  profileName, profileText, cardTemplate, templateImage, popupContainers, urlInput, inactiveButtonClass
 };
 //  Попап редактирования аватарки
 const popupAvatarEdit = document.querySelector('.popup_type_avatar');
@@ -26,4 +26,7 @@ const cardTemplate = document.querySelector('#card-template').content;
 const templateImage = document.querySelector('.elements__image');
 // Все контейнеры попапов
 const popupContainers = document.querySelectorAll('.popup__container');
+// Класс не активной кнопки
+const inactiveButtonClass = 'popup__btn-save_type_disabled';
+
 

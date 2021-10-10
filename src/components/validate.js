@@ -1,4 +1,6 @@
-export {configs, enableValidation};
+
+export {configs, enableValidation, disableSubmitBtn};
+
 // включение валидации вызовом configs
 // все настройки передаются при вызове
 const configs = {
@@ -8,26 +10,32 @@ const configs = {
   buttonSelector: '.popup__btn-save'
 };
 //Проверка инпутов на валидность и выводит текст ошибки
-const inputIsValid = (input) => {
-  const errorContainer = document.getElementById(`${input.name}-error`);
-  if (!input.validity.valid) {
-    input.classList.add('popup__item_type_error');
-    errorContainer.textContent = input.validationMessage;     
+const inputIsValid = (inputSelector) => {
+  const errorContainer = document.getElementById(`${inputSelector.name}-error`);
+  if (!inputSelector.validity.valid) {
+    inputSelector.classList.add('popup__item_type_error');
+    errorContainer.textContent = inputSelector.validationMessage;     
   } else {
-    input.classList.remove('popup__item_type_error');
+    inputSelector.classList.remove('popup__item_type_error');
     errorContainer.textContent = '';    
   } 
 };
 // Включает кнопку если форма валидна
-const enableButtonIfFormIsValid = (form, inputs, buttonSelector) => {
+const enableButtonIfFormIsValid = (form, inputs, buttonSelector, ) => {
   const button = form.querySelector(buttonSelector);
-  const formIsValid = inputs.every(input => input.validity.valid);
-  if (formIsValid) {
+  const formIsValid = inputs.every(inputSelector => inputSelector.validity.valid);
+  if (formIsValid) {    
     button.removeAttribute('disabled');
-  } else {
+    button.classList.remove('popup__btn-save_type_disabled');
+  } else {    
     button.setAttribute('disabled', 'disabled');
-  }
-  
+    button.classList.add('popup__btn-save_type_disabled');
+  }  
+};
+// Отключение сабмит кнопки
+const disableSubmitBtn = (buttonSelector, inactiveButtonClass) => {
+  buttonSelector.classList.add(inactiveButtonClass);
+  buttonSelector.disabled = true;
 };
 // Включение валидации
 const enableValidation = (config) => {
