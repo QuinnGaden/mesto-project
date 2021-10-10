@@ -15,7 +15,7 @@ formAddPlace.addEventListener('submit', () => {
     name: placeInput.value,
     link: linkInput.value,
   };
-  formAddPlace.reset();
+  formAddPlace.reset();  
   addCard(cardData);
   closePopup(popupAddСard);
 });
