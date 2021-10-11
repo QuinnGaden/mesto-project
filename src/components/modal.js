@@ -1,17 +1,19 @@
 import {popupContainers} from '../pages/index.js';
-export {closePopup, openPopup};
+export {closePopup, openPopup, stopPropagation};
 // Функция открытия попапа
 const openPopup = (popup) => {  
   popup.classList.add('popup_opened'); 
   document.addEventListener('keydown', closePopoupEsc); 
   popup.addEventListener('mousedown', closeOpenedPopup);  
-  // Остановили всплытие на попап контейнере, чтобы при клике на форму она не закрывалась
-  popupContainers.forEach((container) => {
+};
+// Остановили всплытие на попап контейнере, чтобы при клике на форму она не закрывалась
+const stopPropagation = () => {
+popupContainers.forEach((container) => {
   container.addEventListener('mousedown', (evt) => {
     evt.stopPropagation();
   });
 });
-};
+}
 // Функция закрытия попапа
 const closePopup = (popup) => {   
   popup.classList.remove('popup_opened');  

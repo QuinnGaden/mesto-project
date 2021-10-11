@@ -7,29 +7,31 @@ const configs = {
   popupSelector: '.popup',
   formSelector: '.popup__form',   
   inputSelector: '.popup__item',
-  buttonSelector: '.popup__btn-save'
+  buttonSelector: '.popup__btn-save',
+  errorInputSelector: 'popup__item_type_error',
+  errorContainerSelector: 'popup__input-error_active'  
 };
-const showInputError = (inputSelector) => {
+const showInputError = (inputSelector, errorInputSelector, errorContainerSelector) => {
   const errorContainer = document.getElementById(`${inputSelector.name}-error`);
-  inputSelector.classList.add('form__input_type_error');
+  inputSelector.classList.add(errorInputSelector);
   errorContainer.textContent = inputSelector.validationMessage;
-  errorContainer.classList.add('form__input-error_active');
+  errorContainer.classList.add(errorContainerSelector);
 };
-const hideInputError = (inputSelector) => {
+const hideInputError = (inputSelector, errorInputSelector, errorContainerSelector) => {
   const errorContainer = document.getElementById(`${inputSelector.name}-error`);
-  inputSelector.classList.remove('form__input_type_error');
-  errorContainer.classList.remove('form__input-error_active');
+  inputSelector.classList.remove(errorInputSelector);
+  errorContainer.classList.remove(errorContainerSelector);
   errorContainer.textContent = '';
 };
 //Проверка инпутов на валидность и выводит текст ошибки
-const inputIsValid = (inputSelector) => {
+const inputIsValid = (inputSelector, errorInputSelector, errorContainerSelector) => {
   // const errorContainer = document.getElementById(`${inputSelector.name}-error`);
   if (!inputSelector.validity.valid) {
-    showInputError(inputSelector);
+    showInputError(inputSelector, errorInputSelector, errorContainerSelector);
     // inputSelector.classList.add('popup__item_type_error');
     // errorContainer.textContent = inputSelector.validationMessage;     
   } else {
-    hideInputError(inputSelector);
+    hideInputError(inputSelector, errorInputSelector, errorContainerSelector);
     // inputSelector.classList.remove('popup__item_type_error');
     // errorContainer.textContent = '';    
   } 
@@ -68,10 +70,8 @@ const enableValidation = (config) => {
     const inputs = Array.from(form.querySelectorAll(config.inputSelector));
     inputs.forEach (input => {
       input.addEventListener('input', () => {
-
         inputIsValid(input);
-        enableButtonIfFormIsValid(form, inputs, config.buttonSelector);
-        
+        enableButtonIfFormIsValid(form, inputs, config.buttonSelector);        
       });
     });
   });  
