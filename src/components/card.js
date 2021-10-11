@@ -1,4 +1,4 @@
-import {cardTemplate} from './constants.js';
+import {cardTemplate} from '../pages/index.js';
 import {initialCards} from './initial-сards.js';
 import {openPopupPhoto} from './modaImagePopup.js';
 export {renderArrCards, addCard};
@@ -7,7 +7,7 @@ function renderArrCards() {
   initialCards.forEach((cardData) => {
     addCard(cardData);
   });
-};
+}
 // Функция создания карточки
 function createCard(cardData) {
   const cardElement = cardTemplate.querySelector('.elements__item').cloneNode(true);
@@ -28,4 +28,4 @@ function createCard(cardData) {
 function addCard(cardData) {
   const cardContainer = document.querySelector('.elements__items');
   cardContainer.prepend(createCard(cardData));
-};
+}

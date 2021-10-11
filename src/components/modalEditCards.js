@@ -1,6 +1,7 @@
 import {closePopup, openPopup} from './modal.js';
-import {popupAddСard, placeInput, linkInput} from './constants.js';
+import {popupAddСard, placeInput, linkInput} from '../pages/index.js';
 import {addCard} from './card.js';
+import {disableSubmitBtn} from './validate.js';
 export {openCardFormButton};
 
 // Открытие попапа редактирования карточек
@@ -15,7 +16,8 @@ formAddPlace.addEventListener('submit', () => {
     name: placeInput.value,
     link: linkInput.value,
   };
-  formAddPlace.reset();  
+  formAddPlace.reset(); 
+  disableSubmitBtn(document.getElementById('editCardBtn'), 'popup__btn-save_type_disabled'); 
   addCard(cardData);
   closePopup(popupAddСard);
 });

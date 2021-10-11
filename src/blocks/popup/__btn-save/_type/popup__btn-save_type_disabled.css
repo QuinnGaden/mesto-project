@@ -1,0 +1,8 @@
+.popup__btn-save_type_disabled {
+  background: #FFF;
+  color: #000;
+  border: 1px solid #000;
+  opacity: .2;
+  cursor: auto;
+}
+
