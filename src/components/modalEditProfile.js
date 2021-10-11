@@ -1,5 +1,5 @@
 import {openPopup, closePopup} from './modal.js';
-import {popupEdit, inputName, inputText, profileName, profileText} from './constants.js';
+import {popupEdit, inputName, inputText, profileName, profileText} from '../pages/index.js';
 export {openEditFormButton};
 // Открытие попапа с заполнением инпутов
 const openEditFormButton = document.querySelector('.profile__edit-button');

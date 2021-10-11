@@ -1,5 +1,5 @@
 import {openPopup} from './modal.js';
-import {popupImage, popupFigcaption, popupPhoto} from './constants.js';
+import {popupImage, popupFigcaption, popupPhoto} from '../pages/index.js';
 export {openPopupPhoto};
 // Функция открытия попапа картинки
 function openPopupPhoto(cardData) {

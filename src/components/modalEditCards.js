@@ -1,5 +1,5 @@
 import {closePopup, openPopup} from './modal.js';
-import {popupAddСard, placeInput, linkInput} from './constants.js';
+import {popupAddСard, placeInput, linkInput} from '../pages/index.js';
 import {addCard} from './card.js';
 import {disableSubmitBtn} from './validate.js';
 export {openCardFormButton};

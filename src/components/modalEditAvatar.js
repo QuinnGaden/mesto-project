@@ -1,5 +1,5 @@
 import {closePopup, openPopup} from './modal.js';
-import {popupAvatarEdit, avatarImage, urlInput} from './constants.js';
+import {popupAvatarEdit, avatarImage, urlInput} from '../pages/index.js';
 export {openEditAvatarButton};
 
 // Открытие попапа редактирования аватарки
