@@ -13,14 +13,14 @@ const configs = {
 };
 const showInputError = (inputSelector, errorInputSelector, errorContainerSelector) => {
   const errorContainer = document.getElementById(`${inputSelector.name}-error`);
-  inputSelector.classList.add(errorInputSelector);
+  inputSelector.classList.add(configs.errorInputSelector);
   errorContainer.textContent = inputSelector.validationMessage;
-  errorContainer.classList.add(errorContainerSelector);
+  errorContainer.classList.add(configs.errorContainerSelector);
 };
 const hideInputError = (inputSelector, errorInputSelector, errorContainerSelector) => {
   const errorContainer = document.getElementById(`${inputSelector.name}-error`);
-  inputSelector.classList.remove(errorInputSelector);
-  errorContainer.classList.remove(errorContainerSelector);
+  inputSelector.classList.remove(configs.errorInputSelector);
+  errorContainer.classList.remove(configs.errorContainerSelector);
   errorContainer.textContent = '';
 };
 //Проверка инпутов на валидность и выводит текст ошибки
