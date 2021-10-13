@@ -1,6 +1,6 @@
 import './index.css';
 import {configs, enableValidation} from '../components/validate.js';
-import {renderArrCards} from '../components/card.js';
+import {getArrayCards} from '../components/card.js';
 import {openEditAvatarButton} from '../components/modalEditAvatar.js';
 import {openCardFormButton} from '../components/modalEditCards.js';
 import {openEditFormButton} from '../components/modalEditProfile.js';
@@ -36,6 +36,9 @@ const templateImage = document.querySelector('.elements__image');
 const popupContainers = document.querySelectorAll('.popup__container');
 
 
-renderArrCards();
+// Остановка высплытия на форме
 stopPropagation();
+// Включение валидации
 enableValidation(configs);
+// Получение массива карточек с сервера и отрисовка
+getArrayCards();

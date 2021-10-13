@@ -1,13 +1,15 @@
 import {cardTemplate} from '../pages/index.js';
-import {initialCards} from './initial-сards.js';
+// import {initialCards} from './initial-сards.js';
 import {openPopupPhoto} from './modaImagePopup.js';
-export {renderArrCards, addCard};
-//Функция подгрузка карточек из массива
-function renderArrCards() {
-  initialCards.forEach((cardData) => {
-    addCard(cardData);
-  });
-}
+import {getInitialCards} from './api.js'
+export {addCard, getArrayCards};
+const cardContainer = document.querySelector('.elements__items');
+// //Функция подгрузка карточек из массива
+// function renderArrCards() {
+//   initialCards.forEach((cardData) => {
+//     addCard(cardData);
+//   });
+// }
 // Функция создания карточки
 function createCard(cardData) {
   const cardElement = cardTemplate.querySelector('.elements__item').cloneNode(true);
@@ -25,7 +27,20 @@ function createCard(cardData) {
   return cardElement;
 }
 // Функция добавление карточки
-function addCard(cardData) {
-  const cardContainer = document.querySelector('.elements__items');
+function addCard(cardData) {  
   cardContainer.prepend(createCard(cardData));
+}
+// функция отрисовки карточек с свервера
+const addInitialCards = (cardData) => {
+  cardData.forEach((item) => {
+    addCard(item)
+  })
+}
+// Получение массива карточек с сервера и отрисовка
+const getArrayCards = () => {
+  getInitialCards()
+  .then(res => res.json())  
+  .then((cards) => {    
+    addInitialCards(cards)
+  })
 }
