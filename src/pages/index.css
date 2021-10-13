@@ -27,8 +27,10 @@
 @import url(../blocks/elements/__item/elements__item.css);
 @import url(../blocks/elements/__image/elements__image.css);
 @import url(../blocks/elements/__name/elements__name.css);
+@import url(../blocks/elements/__like-section/elements__like-section.css);
 @import url(../blocks/elements/__vector/elements__vector.css);
 @import url(../blocks/elements/__group/elements__group.css);
+@import url(../blocks/elements/__counter/elements__counter.css);
 @import url(../blocks/elements/__vector/_active/elements__vector_active.css);
 /*popup*/
 @import url(../blocks/popup/popup.css);

@@ -4,7 +4,8 @@ import {renderArrCards} from '../components/card.js';
 import {openEditAvatarButton} from '../components/modalEditAvatar.js';
 import {openCardFormButton} from '../components/modalEditCards.js';
 import {openEditFormButton} from '../components/modalEditProfile.js';
-import {stopPropagation} from '../components/modal.js'
+import {stopPropagation} from '../components/modal.js';
+import {cards, user} from '../components/api.js';
 export {popupAvatarEdit, avatarImage, popupEdit, inputName, inputText, popupAddСard, placeInput, linkInput, popupPhoto, popupImage, popupFigcaption, 
   profileName, profileText, cardTemplate, templateImage, popupContainers, urlInput };
 
