@@ -5,7 +5,7 @@ import {openEditAvatarButton} from '../components/modalEditAvatar.js';
 import {openCardFormButton} from '../components/modalEditCards.js';
 import {openEditFormButton} from '../components/modalEditProfile.js';
 import {stopPropagation} from '../components/modal.js';
-import {cards, user} from '../components/api.js';
+import {cards, user, getUserProfile} from '../components/api.js';
 export {popupAvatarEdit, avatarImage, popupEdit, inputName, inputText, popupAddСard, placeInput, linkInput, popupPhoto, popupImage, popupFigcaption, 
   profileName, profileText, cardTemplate, templateImage, popupContainers, urlInput };
 
@@ -35,7 +35,8 @@ const templateImage = document.querySelector('.elements__image');
 // Все контейнеры попапов
 const popupContainers = document.querySelectorAll('.popup__container');
 
-
+// Отрисовка профиля пользователя
+getUserProfile();
 // Остановка высплытия на форме
 stopPropagation();
 // Включение валидации

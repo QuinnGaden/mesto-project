@@ -2,7 +2,11 @@ import {cardTemplate} from '../pages/index.js';
 // import {initialCards} from './initial-сards.js';
 import {openPopupPhoto} from './modaImagePopup.js';
 import {getInitialCards} from './api.js'
-export {addCard, getArrayCards};
+export {addCard, getArrayCards, userId, getUserId};
+let userId = '';
+const getUserId = (id) => {
+  userId = id;
+}
 const cardContainer = document.querySelector('.elements__items');
 // //Функция подгрузка карточек из массива
 // function renderArrCards() {
@@ -23,6 +27,7 @@ function createCard(cardData) {
   cardElement.querySelector('.elements__trash').addEventListener('click', (evt) => {
     evt.target.closest('.elements__item').remove();
   });
+  cardElement.querySelector('.elements__counter').textContent = cardData.likes.length;
   imageTemplate.addEventListener('click', () => openPopupPhoto(cardData));
   return cardElement;
 }
@@ -39,8 +44,17 @@ const addInitialCards = (cardData) => {
 // Получение массива карточек с сервера и отрисовка
 const getArrayCards = () => {
   getInitialCards()
-  .then(res => res.json())  
-  .then((cards) => {    
-    addInitialCards(cards)
-  })
+    .then(res => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Ошибка: ${res.status}`);
+    })  
+    .then((cards) => {    
+      addInitialCards(cards)
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }
+

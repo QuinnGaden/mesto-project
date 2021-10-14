@@ -1,5 +1,5 @@
 import {profileName, profileText, avatarImage} from '../pages/index.js';
-export {getInitialCards, config};
+export {getInitialCards, saveProfileData, saveProfileAva, addNewCard, getUserProfile, config};
 
 const config = {
   baseUrl: 'https://mesto.nomoreparties.co/v1/plus-cohort-2',
@@ -19,12 +19,12 @@ const getInitialCards = () => {
 }
 
 // Запрос юзера и заполнение данных профиля с сервера
-const getUser = () => {
+const getUserProfile = () => {
   fetch(`${config.baseUrl}/users/me`, {
     method: 'GET',
     headers: {
-      authorization: `${config.headers.authorization}`
-    }
+      authorization: `${config.headers.authorization}`      
+    }    
   })
     .then(res => res.json())
     .then((user) => {
@@ -34,4 +34,48 @@ const getUser = () => {
       console.log(user);
     }); 
 } 
-getUser();   
+
+
+// Редактирование данных пользователя на сервере
+const saveProfileData = (name, about) => {
+  return fetch(`${config.baseUrl}/users/me`, {
+    method: 'PATCH',
+    headers: {
+      authorization: `${config.headers.authorization}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      name: name,
+      about: about
+    })
+  });
+}
+
+// Редактирование аватара пользователя
+const saveProfileAva = (avatar) => {
+  return fetch(`${config.baseUrl}/users/me/avatar`, {
+    method: 'PATCH',
+    headers: {
+      authorization: `${config.headers.authorization}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      avatar: avatar
+    })
+  });
+}
+
+// Добавление карточки на сервер
+const addNewCard = (name, link) => {
+  return fetch(`${config.baseUrl}/cards`, {
+    method: 'POST',
+    headers: {
+      authorization: `${config.headers.authorization}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      name: name,
+      link: link
+    })  
+  });
+}

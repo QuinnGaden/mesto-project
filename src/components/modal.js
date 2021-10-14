@@ -1,5 +1,6 @@
 import {popupContainers} from '../pages/index.js';
-export {closePopup, openPopup, stopPropagation};
+export {closePopup, openPopup, stopPropagation, renderLoad};
+  
 // Функция открытия попапа
 const openPopup = (popup) => {  
   popup.classList.add('popup_opened'); 
@@ -28,7 +29,7 @@ function closePopoupEsc(evt) {
 };
 //Функция закрытия уже открытого popup
 function closeOpenedPopup() {
-  const popupActive = document.querySelector('.popup_opened');  
+  const popupActive = document.querySelector('.popup_opened');   
     closePopup(popupActive);    
 }  
 // Функция закрытия крестиком
@@ -42,3 +43,14 @@ function setEventListenerCloseBtn() {
   });  
 };
 setEventListenerCloseBtn();
+
+// Функция изменениея кнопки в момент сохранения
+function renderLoad(isLoading) {
+  const popupActive = document.querySelector('.popup_opened');
+  const activeSaveBtn = popupActive.querySelector('.popup__btn-save');
+  if (isLoading) {
+    activeSaveBtn.textContent = 'Сохранение...';
+  } else {
+    activeSaveBtn.textContent = 'Создать';
+  }
+}
