@@ -1,5 +1,6 @@
-import {openPopup, closePopup} from './modal.js';
+import {openPopup, closePopup, renderLoad} from './modal.js';
 import {popupEdit, inputName, inputText, profileName, profileText} from '../pages/index.js';
+import {saveProfileData} from './api.js';
 export {openEditFormButton};
 // Открытие попапа с заполнением инпутов
 const openEditFormButton = document.querySelector('.profile__edit-button');
@@ -12,9 +13,26 @@ openEditFormButton.addEventListener('click', function () {
 const formEdit = document.querySelector('.popup__form_type_edit');
 const nameInput = formEdit .querySelector('.popup__item_el_name');
 const jobInput = formEdit .querySelector('.popup__item_el_text');
-function handlerProfileFormSubmit() {  
-  profileName.textContent = nameInput.value;
-  profileText.textContent = jobInput.value;
-  closePopup(popupEdit);
+// функция редактирования профиля
+function handlerProfileFormSubmit() {   
+  renderLoad(true);
+  saveProfileData(nameInput.value, jobInput.value)
+    .then(res => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`ошибка: ${res.status}`);
+    })
+    .then((res) => {
+      profileName.textContent = res.name;
+      profileText.textContent = res.about;
+      closePopup(popupEdit);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      renderLoad(false);
+    });
 };
 formEdit.addEventListener('submit', handlerProfileFormSubmit);

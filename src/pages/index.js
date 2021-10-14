@@ -1,10 +1,11 @@
 import './index.css';
 import {configs, enableValidation} from '../components/validate.js';
-import {renderArrCards} from '../components/card.js';
+import {getArrayCards, userId, getUserId} from '../components/card.js';
 import {openEditAvatarButton} from '../components/modalEditAvatar.js';
 import {openCardFormButton} from '../components/modalEditCards.js';
 import {openEditFormButton} from '../components/modalEditProfile.js';
-import {stopPropagation} from '../components/modal.js'
+import {stopPropagation} from '../components/modal.js';
+import {cards, user, getUserProfile} from '../components/api.js';
 export {popupAvatarEdit, avatarImage, popupEdit, inputName, inputText, popupAddСard, placeInput, linkInput, popupPhoto, popupImage, popupFigcaption, 
   profileName, profileText, cardTemplate, templateImage, popupContainers, urlInput };
 
@@ -35,6 +36,32 @@ const templateImage = document.querySelector('.elements__image');
 const popupContainers = document.querySelectorAll('.popup__container');
 
 
-renderArrCards();
+
+
+// Отрисовка профиля пользователя
+const renderUserProfile = () => {
+  getUserProfile()
+    .then(res => {
+      if(res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Ошибка: ${res.status}`);
+    })
+    .then((res) => {
+      getUserId(res._id);
+      profileName.textContent = res.name;
+      profileText.textContent = res.about;
+      avatarImage.src = res.avatar;
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+}
+// ОТрисовка профиля юзера
+renderUserProfile();
+// Остановка высплытия на форме
 stopPropagation();
+// Включение валидации
 enableValidation(configs);
+// Получение массива карточек с сервера и отрисовка
+getArrayCards();
