@@ -1,5 +1,5 @@
 import {profileName, profileText, avatarImage} from '../pages/index.js';
-export {getInitialCards, saveProfileData, saveProfileAva, addNewCard, getUserProfile, config};
+export {getInitialCards, saveProfileData, saveProfileAva, addNewCard, getUserProfile, toggleLikeCard, config};
 
 const config = {
   baseUrl: 'https://mesto.nomoreparties.co/v1/plus-cohort-2',
@@ -18,23 +18,15 @@ const getInitialCards = () => {
   })     
 }
 
-// Запрос юзера и заполнение данных профиля с сервера
+// Запрос юзера
 const getUserProfile = () => {
-  fetch(`${config.baseUrl}/users/me`, {
+  return fetch(`${config.baseUrl}/users/me`, {
     method: 'GET',
     headers: {
       authorization: `${config.headers.authorization}`      
     }    
-  })
-    .then(res => res.json())
-    .then((user) => {
-      profileName.textContent = user.name;
-      profileText.textContent = user.about;
-      avatarImage.src = user.avatar;
-      console.log(user);
-    }); 
+  })   
 } 
-
 
 // Редактирование данных пользователя на сервере
 const saveProfileData = (name, about) => {
@@ -78,4 +70,25 @@ const addNewCard = (name, link) => {
       link: link
     })  
   });
+}
+
+// Запрос на снятие и установку лайка карточки
+const toggleLikeCard = (evt, cardData) => {
+  if (!evt.target.classList.contains('elements__vector_active')) {
+    return fetch(`${config.baseUrl}/cards/likes/${cardData._id}`, {
+      method: 'DELETE',
+      headers: {
+        authorization: `${config.headers.authorization}`,
+        'Content-Type': 'application/json'
+      },
+    });
+  } else {
+    return fetch(`${config.baseUrl}/cards/likes/${cardData._id}`, {
+      method: 'PUT',
+      headers: {
+        authorization: `${config.headers.authorization}`,
+        'Content-Type': 'application/json'
+      }
+    });
+  }
 }

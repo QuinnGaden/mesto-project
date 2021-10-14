@@ -1,6 +1,6 @@
 import './index.css';
 import {configs, enableValidation} from '../components/validate.js';
-import {getArrayCards} from '../components/card.js';
+import {getArrayCards, userId, getUserId} from '../components/card.js';
 import {openEditAvatarButton} from '../components/modalEditAvatar.js';
 import {openCardFormButton} from '../components/modalEditCards.js';
 import {openEditFormButton} from '../components/modalEditProfile.js';
@@ -35,8 +35,30 @@ const templateImage = document.querySelector('.elements__image');
 // Все контейнеры попапов
 const popupContainers = document.querySelectorAll('.popup__container');
 
+
+
+
 // Отрисовка профиля пользователя
-getUserProfile();
+const renderUserProfile = () => {
+  getUserProfile()
+    .then(res => {
+      if(res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Ошибка: ${res.status}`);
+    })
+    .then((res) => {
+      getUserId(res._id);
+      profileName.textContent = res.name;
+      profileText.textContent = res.about;
+      avatarImage.src = res.avatar;
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+}
+// ОТрисовка профиля юзера
+renderUserProfile();
 // Остановка высплытия на форме
 stopPropagation();
 // Включение валидации
