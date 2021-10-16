@@ -2,7 +2,7 @@ import {cardTemplate} from '../pages/index.js';
 // import {initialCards} from './initial-сards.js';
 import {openPopupPhoto} from './modaImagePopup.js';
 import {getInitialCards, toggleLikeCard} from './api.js'
-export {addCard, getArrayCards, userId, getUserId};
+export {addCard, userId, getUserId, addInitialCards };
 let userId = '';
 const getUserId = (id) => {
   userId = id;
@@ -43,38 +43,16 @@ const addInitialCards = (cardData) => {
     addCard(item)
   })
 }
-// Получение массива карточек с сервера и отрисовка
-const getArrayCards = () => {
-  getInitialCards()
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
-    })  
-    .then((cards) => {    
-      addInitialCards(cards)
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-}
-
-// 
+// Лайк карточки
 function likeCard (evt, cardData) {
-  evt.target.classList.toggle('elements__vector_active');
-  toggleLikeCard(evt, cardData)
-    .then(res => {
-      if(res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
-    })
+  toggleLikeCard(evt, cardData)    
     .then((res) => {
+      evt.target.classList.toggle('elements__vector_active');
       evt.target.parentNode.querySelector('.elements__counter').textContent = res.likes.length;
     })
     .catch((err) => {
       console.log(err);
     });
 }
+
 

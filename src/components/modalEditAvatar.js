@@ -17,22 +17,16 @@ avatarForm.addEventListener('submit', () => {
 // Форма изменения аватарки 
 const editAvatar = () => {   
   renderLoad(true);
-  saveProfileAva(urlInput.value)
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`ошибка: ${res.status}`);
-    })
+  saveProfileAva(urlInput.value)    
     .then((res) => {
-      avatarImage.src = `url('${res.avatar}'')`;
-      closePopup(popupAvatarEdit);
+      avatarImage.src = `${res.avatar}`;      
     })
     .catch((err) => {
       console.log(err);
     })
     .finally(() => {
       renderLoad(false)
+      closePopup(popupAvatarEdit);
     })
 
   // const formEditAvatarImage = document.querySelector('.popup__form_type_avatar');

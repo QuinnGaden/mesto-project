@@ -16,23 +16,18 @@ const jobInput = formEdit .querySelector('.popup__item_el_text');
 // функция редактирования профиля
 function handlerProfileFormSubmit() {   
   renderLoad(true);
-  saveProfileData(nameInput.value, jobInput.value)
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`ошибка: ${res.status}`);
-    })
+  saveProfileData(nameInput.value, jobInput.value)    
     .then((res) => {
       profileName.textContent = res.name;
       profileText.textContent = res.about;
-      closePopup(popupEdit);
+      
     })
     .catch((err) => {
       console.log(err);
     })
     .finally(() => {
       renderLoad(false);
+      closePopup(popupEdit);
     });
 };
 formEdit.addEventListener('submit', handlerProfileFormSubmit);

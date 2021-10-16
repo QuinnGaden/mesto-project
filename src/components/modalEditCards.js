@@ -13,24 +13,19 @@ openCardFormButton.addEventListener('click', function () {
 // Добавление новой карточки пользователя на сервер
 function addNewUserCard() {
   renderLoad(true);
-  addNewCard(placeInput.value, linkInput.value)
-  .then(res => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`ошибка: ${res.status}`);
-  })
+  addNewCard(placeInput.value, linkInput.value)  
   .then((res) => {
     addCard(res)
-    closePopup(popupAddСard);
+    formAddPlace.reset();
   })
   .catch((err) => {
     console.log(err);
   })
   .finally(() => {
     renderLoad(false);
+    closePopup(popupAddСard);
   });
-  formAddPlace.reset();
+  
 }
 
 // Форма добавления карточки
