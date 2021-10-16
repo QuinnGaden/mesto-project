@@ -1,5 +1,5 @@
 import {profileName, profileText, avatarImage} from '../pages/index.js';
-export {getInitialCards, saveProfileData, saveProfileAva, addNewCard, getUserProfile, toggleLikeCard, config};
+export {checkResponse, getInitialCards, saveProfileData, saveProfileAva, addNewCard, getUserProfile, toggleLikeCard, config};
 
 const config = {
   baseUrl: 'https://mesto.nomoreparties.co/v1/plus-cohort-2',
@@ -8,6 +8,13 @@ const config = {
     'Content-Type': 'application/json'
   }
 }
+// Проверка ответа от сервера
+const checkResponse = (res) => {
+  if (res.ok) {
+    return res.json();
+  }
+  return Promise.reject(`Ошибка: ${res.status}`);
+}
 
 // Запрос объекта с карточками
 const getInitialCards = () => {
@@ -15,7 +22,8 @@ const getInitialCards = () => {
     headers: {
       authorization: `${config.headers.authorization}`
     }
-  })     
+  })
+  .then(checkResponse);      
 }
 
 // Запрос юзера
@@ -25,7 +33,8 @@ const getUserProfile = () => {
     headers: {
       authorization: `${config.headers.authorization}`      
     }    
-  })   
+  })
+  .then(checkResponse); 
 } 
 
 // Редактирование данных пользователя на сервере
@@ -40,7 +49,7 @@ const saveProfileData = (name, about) => {
       name: name,
       about: about
     })
-  });
+  }).then(checkResponse);
 }
 
 // Редактирование аватара пользователя
@@ -54,7 +63,7 @@ const saveProfileAva = (avatar) => {
     body: JSON.stringify({
       avatar: avatar
     })
-  });
+  }).then(checkResponse);
 }
 
 // Добавление карточки на сервер
@@ -69,19 +78,19 @@ const addNewCard = (name, link) => {
       name: name,
       link: link
     })  
-  });
+  }).then(checkResponse);
 }
 
 // Запрос на снятие и установку лайка карточки
 const toggleLikeCard = (evt, cardData) => {
-  if (!evt.target.classList.contains('elements__vector_active')) {
+  if (evt.target.classList.contains('elements__vector_active')) {
     return fetch(`${config.baseUrl}/cards/likes/${cardData._id}`, {
       method: 'DELETE',
       headers: {
         authorization: `${config.headers.authorization}`,
         'Content-Type': 'application/json'
       },
-    });
+    }).then(checkResponse);
   } else {
     return fetch(`${config.baseUrl}/cards/likes/${cardData._id}`, {
       method: 'PUT',
@@ -89,6 +98,6 @@ const toggleLikeCard = (evt, cardData) => {
         authorization: `${config.headers.authorization}`,
         'Content-Type': 'application/json'
       }
-    });
+    }).then(checkResponse);
   }
 }

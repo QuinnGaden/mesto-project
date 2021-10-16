@@ -1,11 +1,12 @@
 import './index.css';
 import {configs, enableValidation} from '../components/validate.js';
-import {getArrayCards, userId, getUserId} from '../components/card.js';
+import { userId, getUserId} from '../components/card.js';
 import {openEditAvatarButton} from '../components/modalEditAvatar.js';
 import {openCardFormButton} from '../components/modalEditCards.js';
 import {openEditFormButton} from '../components/modalEditProfile.js';
 import {stopPropagation} from '../components/modal.js';
-import {cards, user, getUserProfile} from '../components/api.js';
+import {cards, user, getUserProfile, getInitialCards} from '../components/api.js';
+import {addInitialCards} from '../components/card.js';
 export {popupAvatarEdit, avatarImage, popupEdit, inputName, inputText, popupAddСard, placeInput, linkInput, popupPhoto, popupImage, popupFigcaption, 
   profileName, profileText, cardTemplate, templateImage, popupContainers, urlInput };
 
@@ -35,33 +36,26 @@ const templateImage = document.querySelector('.elements__image');
 // Все контейнеры попапов
 const popupContainers = document.querySelectorAll('.popup__container');
 
-
-
+// Общий промис для загрузки профиля и карточек
+const loadData = Promise.all([getUserProfile(), getInitialCards()])
+  .then (data => {
+    getUserId(data[0]._id);
+    renderUserProfile(data[0].name, data[0].about, data[0].avatar)
+    addInitialCards(data[1]);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 // Отрисовка профиля пользователя
-const renderUserProfile = () => {
-  getUserProfile()
-    .then(res => {
-      if(res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
-    })
-    .then((res) => {
-      getUserId(res._id);
-      profileName.textContent = res.name;
-      profileText.textContent = res.about;
-      avatarImage.src = res.avatar;
-    })
-    .catch((err) => {
-      console.log(err);
-    })
+const renderUserProfile = (name, about, avatar) => {       
+  profileName.textContent = name;
+  profileText.textContent = about;
+  avatarImage.src = avatar;     
 }
-// ОТрисовка профиля юзера
-renderUserProfile();
+
 // Остановка высплытия на форме
 stopPropagation();
 // Включение валидации
 enableValidation(configs);
-// Получение массива карточек с сервера и отрисовка
-getArrayCards();
+
