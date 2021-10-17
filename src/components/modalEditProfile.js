@@ -1,5 +1,5 @@
 import {openPopup, closePopup, renderLoad} from './modal.js';
-import {popupEdit, inputName, inputText, profileName, profileText} from '../pages/index.js';
+import {popupEdit, inputName, inputText, profileName, profileText, editProfileBtn} from '../pages/index.js';
 import {saveProfileData} from './api.js';
 export {openEditFormButton};
 // Открытие попапа с заполнением инпутов
@@ -15,19 +15,18 @@ const nameInput = formEdit .querySelector('.popup__item_el_name');
 const jobInput = formEdit .querySelector('.popup__item_el_text');
 // функция редактирования профиля
 function handlerProfileFormSubmit() {   
-  renderLoad(true);
+  renderLoad(editProfileBtn, true);
   saveProfileData(nameInput.value, jobInput.value)    
     .then((res) => {
       profileName.textContent = res.name;
       profileText.textContent = res.about;
-      
+      closePopup(popupEdit);
     })
     .catch((err) => {
       console.log(err);
     })
     .finally(() => {
-      renderLoad(false);
-      closePopup(popupEdit);
+      renderLoad(editProfileBtn, false);      
     });
 };
 formEdit.addEventListener('submit', handlerProfileFormSubmit);

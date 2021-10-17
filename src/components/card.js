@@ -1,7 +1,7 @@
 import {cardTemplate} from '../pages/index.js';
 // import {initialCards} from './initial-сards.js';
 import {openPopupPhoto} from './modaImagePopup.js';
-import {getInitialCards, toggleLikeCard} from './api.js'
+import {getInitialCards, toggleLikeCard, deleteCard} from './api.js'
 export {addCard, userId, getUserId, addInitialCards };
 let userId = '';
 const getUserId = (id) => {
@@ -23,6 +23,10 @@ function createCard(cardData) {
   cardElement.querySelector('.elements__name').textContent = `${cardData.name}`;
   cardElement.querySelector('.elements__vector').addEventListener('click', (evt) => likeCard (evt, cardData));
   cardElement.querySelector('.elements__trash').addEventListener('click', (evt) => {
+    deleteCard(cardData)
+    .catch((err) => {
+      console.log(err);
+    });
     evt.target.closest('.elements__item').remove();
   });
   if (cardData.owner._id === userId) {

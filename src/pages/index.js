@@ -8,20 +8,23 @@ import {stopPropagation} from '../components/modal.js';
 import {cards, user, getUserProfile, getInitialCards} from '../components/api.js';
 import {addInitialCards} from '../components/card.js';
 export {popupAvatarEdit, avatarImage, popupEdit, inputName, inputText, popupAddСard, placeInput, linkInput, popupPhoto, popupImage, popupFigcaption, 
-  profileName, profileText, cardTemplate, templateImage, popupContainers, urlInput };
+  profileName, profileText, cardTemplate, templateImage, popupContainers, editAvatarBtn, editProfileBtn, editCardBtn, urlInput};
 
 //  Попап редактирования аватарки
 const popupAvatarEdit = document.querySelector('.popup_type_avatar');
 const avatarImage = document.querySelector('.profile__image');
 const urlInput = document.querySelector('.popup__item_el_url');
+const editAvatarBtn = document.getElementById('editAvatarBtn');
 // Попап редактирования профиля
 const popupEdit = document.querySelector('.popup_type_edit');
 const inputName = popupEdit.querySelector('.popup__item_el_name');
 const inputText = popupEdit.querySelector('.popup__item_el_text');
+const editProfileBtn = document.getElementById('editProfileBtn');
 // Попап редактирования карточки
 const popupAddСard = document.querySelector('.popup_type_addcard');
 const placeInput = popupAddСard.querySelector('.popup__item_el_place');
 const linkInput = popupAddСard.querySelector('.popup__item_el_link');
+const editCardBtn = document.getElementById('editCardBtn');
 // Попап фотографии
 const popupPhoto = document.querySelector('.popup_type_photo');
 const popupImage = document.querySelector('.popup__image');
