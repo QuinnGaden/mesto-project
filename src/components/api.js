@@ -1,5 +1,5 @@
 import {profileName, profileText, avatarImage} from '../pages/index.js';
-export {checkResponse, getInitialCards, saveProfileData, saveProfileAva, addNewCard, getUserProfile, toggleLikeCard, config};
+export {deleteCard, checkResponse, getInitialCards, saveProfileData, saveProfileAva, addNewCard, getUserProfile, toggleLikeCard, config};
 
 const config = {
   baseUrl: 'https://mesto.nomoreparties.co/v1/plus-cohort-2',
@@ -100,4 +100,14 @@ const toggleLikeCard = (evt, cardData) => {
       }
     }).then(checkResponse);
   }
+}
+
+// запрос удаления карточки
+const deleteCard = (cardData) => {
+  return fetch(`${config.baseUrl}/cards/${cardData._id}`, {
+    method: 'DELETE',
+    headers: {
+      authorization: `${config.headers.authorization}`
+    }
+  }).then(checkResponse);
 }

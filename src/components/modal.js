@@ -1,6 +1,7 @@
 import {popupContainers} from '../pages/index.js';
+import {configs} from './validate.js';
 export {closePopup, openPopup, stopPropagation, renderLoad};
-  
+     
 // Функция открытия попапа
 const openPopup = (popup) => {  
   popup.classList.add('popup_opened'); 
@@ -45,12 +46,10 @@ function setEventListenerCloseBtn() {
 setEventListenerCloseBtn();
 
 // Функция изменениея кнопки в момент сохранения
-function renderLoad(isLoading) {
-  const popupActive = document.querySelector('.popup_opened');
-  const activeSaveBtn = popupActive.querySelector('.popup__btn-save');
+function renderLoad(activeBtn, isLoading) { 
   if (isLoading) {
-    activeSaveBtn.textContent = 'Сохранение...';
+    activeBtn.textContent = 'Сохранение...';
   } else {
-    activeSaveBtn.textContent = 'Создать';
+    activeBtn.textContent = 'Создать';
   }
 }

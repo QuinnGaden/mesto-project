@@ -1,6 +1,7 @@
 import {closePopup, openPopup, renderLoad} from './modal.js';
-import {popupAvatarEdit, avatarImage, urlInput} from '../pages/index.js';
+import {popupAvatarEdit, avatarImage, urlInput, editAvatarBtn} from '../pages/index.js';
 import {saveProfileAva} from '../components/api.js';
+import {disableSubmitBtn} from './validate.js';
 export {openEditAvatarButton};
 const avatarForm = document.querySelector('.popup__form_type_avatar');
 // Открытие попапа редактирования аватарки
@@ -10,23 +11,23 @@ openEditAvatarButton.addEventListener('click', () =>{
 });
 // Работоспособность кнопки сохранить на форме редактированиря аватарки
 avatarForm.addEventListener('submit', () => {
-  editAvatar();
-  avatarForm.reset();
+  editAvatar();  
+  disableSubmitBtn(editAvatarBtn, 'popup__btn-save_type_disabled');
 })
-
 // Форма изменения аватарки 
 const editAvatar = () => {   
-  renderLoad(true);
+  renderLoad(editAvatarBtn, true);
   saveProfileAva(urlInput.value)    
     .then((res) => {
-      avatarImage.src = `${res.avatar}`;      
+      avatarImage.src = `${res.avatar}`;  
+      avatarForm.reset();       
+      closePopup(popupAvatarEdit);      
     })
     .catch((err) => {
-      console.log(err);
+      console.log(err);      
     })
     .finally(() => {
-      renderLoad(false)
-      closePopup(popupAvatarEdit);
+      renderLoad(editAvatarBtn, false)      
     })
 
   // const formEditAvatarImage = document.querySelector('.popup__form_type_avatar');
