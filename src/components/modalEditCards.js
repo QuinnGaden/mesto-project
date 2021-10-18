@@ -16,6 +16,7 @@ function addNewUserCard() {
   .then((res) => {
     addCard(res)
     formAddPlace.reset();
+    disableSubmitBtn(editCardBtn, 'popup__btn-save_type_disabled'); 
     closePopup(popupAddСard);
   })
   .catch((err) => {
@@ -34,7 +35,7 @@ formAddPlace.addEventListener('submit', () => {
   // };
   addNewUserCard();
   // formAddPlace.reset(); 
-  disableSubmitBtn(editCardBtn, 'popup__btn-save_type_disabled'); 
+  
   // addCard(cardData);
   // closePopup(popupAddСard);
 });

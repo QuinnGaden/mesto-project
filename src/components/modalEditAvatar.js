@@ -12,7 +12,7 @@ openEditAvatarButton.addEventListener('click', () =>{
 // Работоспособность кнопки сохранить на форме редактированиря аватарки
 avatarForm.addEventListener('submit', () => {
   editAvatar();  
-  disableSubmitBtn(editAvatarBtn, 'popup__btn-save_type_disabled');
+  
 })
 // Форма изменения аватарки 
 const editAvatar = () => {   
@@ -20,7 +20,8 @@ const editAvatar = () => {
   saveProfileAva(urlInput.value)    
     .then((res) => {
       avatarImage.src = `${res.avatar}`;  
-      avatarForm.reset();       
+      avatarForm.reset();   
+      disableSubmitBtn(editAvatarBtn, 'popup__btn-save_type_disabled');    
       closePopup(popupAvatarEdit);      
     })
     .catch((err) => {

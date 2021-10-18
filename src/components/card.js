@@ -24,10 +24,13 @@ function createCard(cardData) {
   cardElement.querySelector('.elements__vector').addEventListener('click', (evt) => likeCard (evt, cardData));
   cardElement.querySelector('.elements__trash').addEventListener('click', (evt) => {
     deleteCard(cardData)
+    .then(() => {
+      evt.target.closest('.elements__item').remove();
+    })
     .catch((err) => {
       console.log(err);
     });
-    evt.target.closest('.elements__item').remove();
+    
   });
   if (cardData.owner._id === userId) {
     cardElement.querySelector('.elements__trash').classList.add('elements__trash_type_active');
